@@ -77,6 +77,7 @@ input[type=text] {
 
 .navbar-dark .navbar-nav .nav-link {
   color: #9d9d9d;
+	text-decoration: none;
 }
 
 .navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
@@ -140,12 +141,16 @@ a.navbar-brand img {
   background-color: var(--UNBmagenta);
 }
 
+a, a:hover {
+	color: var(--UNBmagenta);
+}
 
-a {
+
+a.xlink {
 	color: #2D8DCC;
   text-decoration: underline;
-  font-weight: normal;
-  font-family: 'Segoe UI Semibold';
+  /* font-weight: normal; */
+  /* font-family: 'Segoe UI Semibold'; */
 }
 
 .nav-pills { margin-bottom: 10px; }
