@@ -1,0 +1,48 @@
+version: '3'
+services:
+  ukc-ep:
+    image: "unboundukc/ukc-vhsm:2001"
+    container_name: ukc-ep
+    restart: always
+    ports:
+      - "443:8443"
+      - "9021:9001"
+      - "9022:9002"
+      - "8082:8080"
+    command: ["ep", "ukc-partner", "ukc-aux"]
+    hostname: ukc-ep
+    env_file:
+      settings.env
+  ukc-partner:
+    image: "unboundukc/ukc-vhsm:2001"
+    container_name: ukc-partner
+    restart: always
+    command: ["partner", "ukc-ep", "ukc-aux"]
+    hostname: ukc-partner
+    depends_on:
+      - "ukc-ep"
+    ports:
+      - "9023:9002"
+  ukc-aux:
+    image: "unboundukc/ukc-vhsm:2001"
+    container_name: ukc-aux
+    restart: always
+    command: ["aux", "ukc-ep", "ukc-partner"]
+    hostname: ukc-aux
+    depends_on:
+      - "ukc-ep"
+      - "ukc-partner"
+    ports:
+      - "9024:9001"
+  ukc-client:
+    image: "unboundukc/vhsm-client:2001"
+    container_name: ukc-client
+    restart: always
+    hostname: ukc-client
+    depends_on:
+      - "ukc-ep"
+    ports:
+      - "8081:8081"
+      - "8444:8443"
+    env_file:
+      settings.env
