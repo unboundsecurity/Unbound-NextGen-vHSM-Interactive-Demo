@@ -12,7 +12,10 @@ if ! ucl list -n ca -t ECC | grep ECC; then
   ucl export -n ca -o /certs/ca.key --obfuscate
 
   echo "# Self-sign the CA"
-  openssl req -config /openssl.cnf -key /certs/ca.key  -new -x509 -days 7300 -sha256 -extensions v3_ca  -out /certs/ca.crt -subj "/CN=myCA"
+  openssl req -config /setup/openssl.cnf -key /certs/ca.key  -new -x509 -days 7300 -sha256 -extensions v3_ca  -out /certs/ca.crt -subj "/CN=myCA"
+  
+  echo "#Keytool import cert"
+  (echo changeit; sleep 1; echo y; sleep 1)|keytool -importcert -file /certs/ca.crt -alias ukcdh -keystore /usr/local/jdk-11.0.2/lib/security/cacerts
 fi
 
 if ! ucl list -n ca | grep Certificate; then
@@ -39,35 +42,12 @@ if ! ucl list -n codeSigning -t RSA | grep RSA ; then
   touch /certs/index.txt
 
   echo "Create certificate"
-  (echo y; sleep 1; echo y; sleep 1) | openssl ca -config /openssl.cnf -create_serial -extensions codeSigning_cert -days 375  -in /certs/code_signing.csr -out /certs/code_signing.crt
+  (echo y; sleep 1; echo y; sleep 1) | openssl ca -config /setup/openssl.cnf -create_serial -extensions codeSigning_cert -days 375  -in /certs/code_signing.csr -out /certs/code_signing.crt
 fi
 
 if ! ucl list -n codeSigning | grep Certificate; then
   echo "Import certificate"
   ucl import --input /certs/code_signing.crt --user user --name codeSigning
-fi
-
-if ! ucl list -n tomcat -t ECC | grep ECC ; then
-  echo "# Create tomcat key"
-  ucl generate -t ECC -n tomcat --user user
-
-  echo "# Export the tomcat key"
-  ucl export -n tomcat -o /certs/tomcat.key --obfuscate
-
-  echo "# Create certificate request."
-  #ucl csr -o /certs/tomcat.csr --subject "CN=ukc-ep;O=SERVER" -n tomcat --user user
-  openssl req -new -sha256 -key /certs/tomcat.key -out /certs/tomcat.csr -subj '/CN=ukc-ep;/O=SERVER'
-
-  #echo "# Convert CSR to PEM."
-  #openssl req -inform DER -in /certs/tomcat.csr -out /certs/tomcat.csr
-
-  echo "Create certificate"
-  (echo y; sleep 1; echo y; sleep 1) | openssl ca -config /openssl.cnf -create_serial -extensions vhsmdemo_cert -days 375  -in /certs/tomcat.csr -out /certs/tomcat.crt
-fi
-
-if ! ucl list -n tomcat | grep Certificate; then
-  echo "Import certificate"
-  ucl import --input /certs/tomcat.crt --user user --name tomcat
 fi
 
 echo "# Check existing keys in UKC"

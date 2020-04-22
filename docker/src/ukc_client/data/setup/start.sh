@@ -17,7 +17,7 @@ until $(curl --output /dev/null --silent -k --fail --compressed \
 done
 
 echo "UKC ready registering client"
-./register_new_client.sh
+./setup/register_new_client.sh
 
 echo "Resetting 'user' password to empty"
 # ucl user reset-pwd -n user -w $UKC_PASSWORD
@@ -32,10 +32,7 @@ curl "https://ukc-ep/api/v1/users/user/password?partitionId=$UKC_PARTITION" \
 
 
 echo "Create certificates"
-./create_certificates.sh
-
-echo "Using UKC with GPG"
-./pgp_docker_signing.sh
+./setup/create_certificates.sh
 
 if ! ucl show -n $UKC_FPE_KEY; then
   echo "Creating key '$UKC_FPE_KEY' for tokenization"
@@ -131,6 +128,6 @@ fi #if [ "$VHSM_DEMO_USE_HTTPS" = "true" ]
 # cd /unbound_crypto_server && mvn spring-boot:run
 
 echo "Starting vHSM app"
-/wait_until_ready.sh &
-java -jar /unbound_vhsm/ukc-vhsm-server-0.0.1.jar > /unbound_vhsm/vhsm-demo.log
+/setup/wait_until_ready.sh &
+java -jar /opt/unbound_vhsm/ukc-vhsm-server-0.0.1.jar > /opt/unbound_vhsm/vhsm-demo.log
 

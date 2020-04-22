@@ -14,6 +14,7 @@ RUN yum install -y which\
     && rm -rf /var/cache/yum
 RUN curl -sO https://download.oracle.com/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz ;    tar zxvf openjdk-11.0.2_linux-x64_bin.tar.gz ;    mv jdk-11.0.2 /usr/local/
 RUN ln -s /usr/local/jdk-11.0.2/bin/java /usr/bin/java
+RUN rm /openjdk-11.0.2_linux-x64_bin.tar.gz
 ENV JAVA_HOME=/usr/local/jdk-11.0.2
 ENV PATH=$PATH:$JAVA_HOME/bin
 #RUN curl -sL https://rpm.nodesource.com/setup_10.x | bash - ;  yum install -y nodejs;  yum clean all

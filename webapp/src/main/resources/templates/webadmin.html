@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!--/*/ <th:block th:include="fragments/layout.html :: headerfiles">
+        </th:block> /*/-->
+  <script th:inline="javascript">
+    $(function() {
+    /*<![CDATA[*/
+      var userPartitionPath = /*[[${userPartitionPath}]]*/ ':8020';
+      var rootPartitionPath = /*[[${rootPartitionPath}]]*/ ':8020';
+    /*]]>*/
+      $("#webadmin_link").attr('href', "http://" + window.location.hostname + userPartitionPath);
+      $("#webadminroot_link").attr('href', "http://" + window.location.hostname + rootPartitionPath);
+    })
+  </script>
+  <style media="screen">
+    h2 {
+      margin-bottom: 5px;
+    }
+
+    .section:not(:last-child) {
+      margin-bottom: 30px;
+    }
+
+    .section > p {
+      margin-bottom: 0.7rem;
+    }
+  </style>
+</head>
+<body>
+  <div th:replace="fragments/layout.html :: navbar(webadmin)"></div>
+  <div class="container">
+    <h1> UKC Admin</h1>
+    <p>
+      UKC has a web administration portal.
+      You can log into this portal as either the <strong>Root SO</strong> or the <strong>Partition SO</strong>.
+    </p>
+    <div class="section">
+      <h2>Root SO
+        <a href="https://www.unboundtech.com/docs/UKC/UKC_User_Guide/HTML/Content/Products/UKC-EKM/UKC_User_Guide/UI/Root_UI/RootUI.html"
+          target="_blank"
+          class="help_link">
+          ?
+        </a>
+      </h2>
+      <p>
+        The Root Security Officer (SO) manages UKC partitions.
+      </p>
+      <p>
+        A UKC partition namespaces UKC into segregated domains that specify key material, authorized users, and certified client machines.
+      </p>
+      <a id="webadminroot_link"
+        class="btn btn-primary"
+        target="_blank" href="#">Log into UKC Admin as Root SO</a>
+    </div>
+    <div class="section">
+      <h2>Partition SO
+        <a href="https://www.unboundtech.com/docs/UKC/UKC_User_Guide/HTML/Content/Products/UKC-EKM/UKC_User_Guide/UI/SO_UI/SoUI.html"
+          target="_blank"
+          class="help_link">
+          ?
+        </a>
+      </h2>
+      <p>
+        The Partition SO manages a single partition, including configuring access permissions and creating secure objects (such as keys and secrets).
+      </p>
+
+      <a id="webadmin_link"
+        class="btn btn-primary"
+        target="_blank" href="#">Log into UKC Admin as Partition SO</a>
+    </div>
+
+  </div>
+</body>
+</html>

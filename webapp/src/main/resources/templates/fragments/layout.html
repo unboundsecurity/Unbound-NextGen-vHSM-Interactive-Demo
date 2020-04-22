@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="headerfiles">
+  <title>Unbound vHSM demo</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link href="/webjars/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+  <script src="/webjars/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/webjars/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" media="all" th:href="@{/stylesheets/fonts.css}" />
+  <link rel="stylesheet" type="text/css" media="all" th:href="@{/stylesheets/styles.css}" />
+  <link rel="icon" th:href="@{/images/cropped-favicon-512x512-blue-03-32x32.png}" sizes="32x32">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" th:fragment="navbar(activeNav)">
+    <a class="navbar-brand" href="/" alt="Home"></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" th:classappend="${#strings.equals(activeNav,'home')} ? active : ''">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item" th:classappend="${#strings.equals(activeNav,'webadmin')} ? active : ''">
+          <a class="nav-link" href="/webadmin">UKC Admin</a>
+        </li>
+        <li class="nav-item" th:classappend="${#strings.equals(activeNav,'tokenization')} ? active : ''">
+          <a class="nav-link" href="/tokenization">Tokenization</a>
+        </li>
+        <li class="nav-item" th:classappend="${#strings.equals(activeNav,'cli')} ? active : ''">
+          <a class="nav-link" href="/cli">CLI</a>
+        </li>
+        <li class="nav-item" th:classappend="${#strings.equals(activeNav,'logs')} ? active : ''">
+          <a class="nav-link" href="/logs">Logs</a>
+        </li>
+        <li class="nav-item" th:classappend="${#strings.equals(activeNav,'resources')} ? active : ''">
+          <a class="nav-link" href="/resources">Resources</a>
+        </li>
+        <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">
+                Resources
+            </a>
+            <div class="dropdown-menu pull-right" aria-labelledby="navbarDropdown">
+
+                <a class="dropdown-item" href="https://www.unboundtech.com/docs/UKC/UKC_Developers_Guide/HTML/Content/Products/Unbound_Cover_Page.htm"
+                    target="_blank">UKC Developers guide</a>
+            </div>
+        </li> -->
+      </ul>
+    </div>
+  </nav>
+
+</body>

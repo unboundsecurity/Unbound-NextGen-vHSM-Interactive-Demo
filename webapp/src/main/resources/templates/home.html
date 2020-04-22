@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout.html :: headerfiles"></head>
+
+<body>
+  <div th:replace="fragments/layout.html :: navbar(home)"></div>
+
+  <div class="container">
+  	<div class="jumbotron">
+      <h1>Welcome</h1>
+      <p>
+        Congratulations, UKC was successfully installed!
+      </p>
+      <p>
+        This site demostrates a UKC system. It provides a tokenization demo, as well as lets you explore UKC through the UKC Admin interface, the client command line, and the system log files.
+      </p>
+      <p>
+        The site has the following sections:
+        <ol>
+          <li>
+            <a href="/tokenization">Tokenization</a> - UKC can be used for tokenization with a format-preserving encryption (FPE) key. This site demonstrates tokenization/de-tokenization of various tokens by UKC using a pre-defined FPE key stored in UKC. The demo use cases include free text, credit card number, email address, USA SSN, and USA phone number.
+          </li>
+          <li>
+            <a href="/webadmin">UKC Admin</a> - access the UKC administration interface, which can be used to view the FPE key details and more.
+          </li>
+          <li>
+            <a href="cli">CLI</a> - get access to the UKC client command line interface.
+          </li>
+          <li>
+            <a href="/logs">Logs</a> - view the logs for the UKC servers. This can be helpful to view after running tokenization/de-tokenization operations.
+          </li>
+          <li>
+            <a href="#">Resources</a> - links to more information about UKC, the SDE API, and more.
+          </li>
+
+        </ol>
+      </p>
+
+      <p>
+        <img src="/images/ukc-system.png" alt="ukc system diagram">
+      </p>
+      <p>
+        <a class="btn btn-lg btn-primary"
+          href="/tokenization" role="button">Go to the tokenization demo »</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

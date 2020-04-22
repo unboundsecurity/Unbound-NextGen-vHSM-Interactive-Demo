@@ -1,0 +1,49 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat/Montserrat-SemiBold.woff2') format('woff2'),
+        url('/fonts/Montserrat/Montserrat-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat/Montserrat-Light.woff2') format('woff2'),
+        url('/fonts/Montserrat/Montserrat-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat/Montserrat-Bold.woff2') format('woff2'),
+        url('/fonts/Montserrat/Montserrat-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('/fonts/SansPro/SourceSansPro-Regular.woff2') format('woff2'),
+        url('/fonts/SansPro/SourceSansPro-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('/fonts/SansPro/SourceSansPro-SemiBold.woff2') format('woff2'),
+        url('/fonts/SansPro/SourceSansPro-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('/fonts/SansPro/SourceSansPro-Light.woff2') format('woff2'),
+        url('/fonts/SansPro/SourceSansPro-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
