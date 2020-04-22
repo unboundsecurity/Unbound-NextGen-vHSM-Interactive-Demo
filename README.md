@@ -46,51 +46,37 @@ Use these instructions to get UKC running using Docker.
    **Note:** If you are restarting or trying to update UKC Express Deploy, refer to [Restarting/Updating Docker](#update).
    
     ```bash
+    docker-compose pull
     docker-compose up
     ```
     The setup takes several minutes to complete.
 	
-    Everything is installed and working when you see this message:
-    ```
-    UKC system is ready
-    ```
+    Everything is installed and working when you see a large **READY** message:
+    
 
 **Congratulations! UKC is now running.**
 
 ## 1.2. Next Steps
 After installation, you can try some of these tasks:
 1. [Explore the web interface](./#webint)
-1. [Create and activate a client](./#ukcclient)
 1. [Integrate UKC with your system](./#integration)
 
 <a name="webint"></a>
 ### 1.2.1. Explore the Web Interface
-Open your browser and navigate to `https://localhost/login` (for Windows) or `https://<docker-ip-address>/login` (for Linux, where *docker-ip-address* is the server where you installed Docker). Use these credentials to log in:
-- Username: so
-- Password: Unbound1!
-- Partition: root
+Open your browser and navigate to `http://localhost:8081` (for Windows) or `http://<docker-ip-address>:8081` (for Linux, where *docker-ip-address* is the server where you installed Docker). 
 
-The Web UI provides the following screens:
+The Web UI provides the following sections:
 
-- Keys and Certificates - provides information about your keys and certificates.
-- Partitions - lists all partitions.
-- Clients - lists all client.
-- Users - lists all users.
-- Authorize - shows operations that are pending approval.
-- Config - shows the UKC settings.
-- Rescue - use to reset the SO password.
-- Help - open the UKC User Guide.
+1. Tokenization - UKC can be used for tokenization with a format-preserving encryption (FPE) key. This site demonstrates tokenization/de-tokenization of various tokens by UKC using a pre-defined FPE key stored in UKC. The demo use cases include free text, credit card number, email address, USA SSN, and USA phone number.
+2. UKC Admin - access the UKC administration interface, which can be used to view the FPE key details and more. Use these credentials to log in:
+    - Username: so
+    - Password: Unbound1!
+    - Partition: root (or test)
+    For more information on how to use the web interface, see [UKC User Guide](https://www.unboundtech.com/docs/UKC/UKC_User_Guide/HTML/Content/Products/UKC-EKM/UKC_User_Guide/UI/A1.html).
+3. CLI - get access to the UKC client command line interface.
+4. Logs - view the logs for the UKC servers. This can be helpful to view after running tokenization/de-tokenization operations.
+5. Resources - links to more information about UKC, the SDE API, and 
 
-There is also a partition called **test** that you can use.
-
-For more information on how to use the web interface, see [UKC User Guide](https://www.unboundtech.com/docs/UKC/UKC_User_Guide/HTML/Content/Products/UKC-EKM/UKC_User_Guide/UI/A1.html).
-
-<a name="ukcclient"></a>
-### 1.2.2. Create and activate a client
-
-[Contact Unbound](https://www.unboundtech.com/company/contact-us/) to get a link to download the UKC client.
-
-Information about installing the UKC client can be found [here](https://www.unboundtech.com/docs/UKC/UKC_User_Guide/HTML/Content/Products/UKC-EKM/UKC_User_Guide/Installation/ClientInstallation.html#h2_1).
 
 <a name="integration"></a>
 ### 1.2.3. Integrate UKC with your system

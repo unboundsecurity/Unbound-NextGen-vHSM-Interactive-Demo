@@ -1,17 +1,17 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
 
 # build app
-DOCKER_CLIENT_ROOT=~/work/UKC-Express-Deploy/ukc-docker/src/ukc_client_rest
+DOCKER_CLIENT_ROOT=../ukc_client
 docker exec -w /unbound \
   -it vhsm-dev \
   mvn clean package
 
-cp ~/work/unbound_crypto_server/target/ukc-vhsm-server-0.0.1.jar ../ukc_client_rest/data/
+cp ../../../webapp/target/ukc-vhsm-server-0.0.1.jar ../ukc_client/data/
 
 # build docker image
- cd ../ukc_client_rest
- ./build.sh
+cd ../ukc_client
+./build.sh
 
 # publish
 # docker push unboundukc/vhsm-client:2001

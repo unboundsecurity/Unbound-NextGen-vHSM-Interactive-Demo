@@ -1,3 +1,16 @@
+:root
+{
+	--UNBmagenta: #7E2452;
+	--UNBblue: #252c3d;
+	--UNBgold: #c6a572;
+	--UNBref: #2D8DCC;
+	--UNBgray: #ebebeb;
+	--UNBdarkgray: #dde0e7;
+	--UNBresponse: #f0fff0;
+	--UNBwarn: #FFEED5;
+}
+
+
 .container {
     width: 100%;
     max-width: none;
@@ -34,7 +47,7 @@
 
 .navbar {
   min-height: 60px;
-  background-color: #252c3d;
+  background-color: var(--UNBblue);
 }
 
 .navbar-brand {
@@ -94,7 +107,7 @@ a.navbar-brand img {
 }
 
 /* .navbar-nav > .active > a {
-  color: #7e2452;
+  color: var(--UNBmagenta);
   background: lightgray;
 } */
 
@@ -104,13 +117,13 @@ a.navbar-brand img {
 
 
 .navbar-nav > li > a:hover {
-  color: #7e2452;
+  color: var(--UNBmagenta);
   background: #c3c2c2;
 }
 
 .btn-primary {
-  background-color: #7e2452;
-  border-color: #7e2452;
+  background-color: var(--UNBmagenta);
+  border-color: var(--UNBmagenta);
   color: white;
 }
 
@@ -124,12 +137,12 @@ a.navbar-brand img {
 }
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-  background-color: #7e2452;
+  background-color: var(--UNBmagenta);
 }
 
 
 a {
-  color: #7e2452;
+  color: var(--UNBmagenta);
 }
 
 .nav-pills { margin-bottom: 10px; }
@@ -221,4 +234,20 @@ a:hover {
 
 h2 .help_link {
   padding-left: 5px;
+}
+
+.limit_width {
+  max-width: 700px;
+}
+
+code {
+  background-color: var(--UNBgray);
+  mc-hyphenate: never;
+  color: black;
+  font-family: Consolas;
+  font-size: 11pt;
+  page-break-inside: avoid;
+  padding-right: 1pt;
+  page-break-before: avoid;
+  padding-left: 3px;
 }
