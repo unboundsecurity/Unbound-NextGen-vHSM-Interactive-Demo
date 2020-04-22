@@ -3,7 +3,7 @@ docker run -d \
   -v $WEBAPP_ROOT/../.m2/:/root/.m2/ \
   -v $WEBAPP_ROOT:/unbound \
   --name vhsm-dev \
-  --network ukc-docker_default \
+  --network unbound-ukc-demo \
   -p 127.0.0.1:35729:35729/tcp \
   -p 127.0.0.1:8081:8081/tcp -p 127.0.0.1:8444:8443 \
   --env-file ../../settings.env \

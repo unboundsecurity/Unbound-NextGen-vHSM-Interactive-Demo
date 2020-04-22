@@ -1,4 +1,6 @@
 version: '3'
+networks:
+  unbound-ukc-demo:
 services:
   ukc-ep:
     image: "unboundukc/ukc-vhsm:2001"
@@ -13,6 +15,8 @@ services:
     hostname: ukc-ep
     env_file:
       settings.env
+    networks:
+      - unbound-ukc-demo
   ukc-partner:
     image: "unboundukc/ukc-vhsm:2001"
     container_name: ukc-partner
@@ -23,6 +27,8 @@ services:
       - "ukc-ep"
     ports:
       - "9023:9002"
+    networks:
+      - unbound-ukc-demo
   ukc-aux:
     image: "unboundukc/ukc-vhsm:2001"
     container_name: ukc-aux
@@ -34,6 +40,8 @@ services:
       - "ukc-partner"
     ports:
       - "9024:9001"
+    networks:
+      - unbound-ukc-demo
   ukc-client:
     image: "unboundukc/vhsm-client:2001"
     container_name: ukc-client
@@ -46,3 +54,5 @@ services:
       - "8444:8443"
     env_file:
       settings.env
+    networks:
+      - unbound-ukc-demo
