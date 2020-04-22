@@ -1,12 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/layout.html :: headerfiles"></head>
+<head>
+  <!--/*/ <th:block th:include="fragments/layout.html :: headerfiles">
+        </th:block> /*/-->
+  <script th:inline="javascript">
+    $(function() {
+      $('[data-toggle="popover"]').popover()
+    })
+  </script>
+
+  <style media="screen">
+    .server_tooltip {
+      position: absolute;
+      width: 145px;
+      height: 140px;
+      top: 50px;
+    }
+    .server_tooltip:hover {
+      cursor: pointer;
+    }
+
+    #ep_tooltip {
+      left: 18px;
+    }
+
+    #partner_tooltip {
+      width: 125px;
+      left: 165px;
+    }
+
+    #aux_tooltip {
+      left: 293px;
+      width: 116px;
+    }
+
+    #client_tooltip {
+      left: 500px;
+    }
+  </style>
+</head>
 
 <body>
   <div th:replace="fragments/layout.html :: navbar(home)"></div>
 
   <div class="container">
-  	<div class="jumbotron">
       <h1>Welcome</h1>
       <p>
         Congratulations, UKC was successfully installed!
@@ -35,15 +72,40 @@
 
         </ol>
       </p>
-
-      <p>
+      <div style="position: relative; margin-bottom:30px">
         <img src="/images/ukc-system.png" alt="ukc system diagram">
-      </p>
+        <div style="position:absolute; top:0; left:0; width:100%; height:100%; z-index: 1px;">
+          <div data-toggle="popover" class="server_tooltip" id="ep_tooltip"
+              data-content="This node is used for storing key-shares, running MPC algorithms and running the UKC Admin web app."
+              data-placement="top" title="Entry Point (EP)"
+              data-trigger="hover"
+              >
+          </div>
+          <div data-toggle="popover" class="server_tooltip" id="partner_tooltip"
+          data-placement="top"
+          title="Partner"
+          data-trigger="hover"
+          data-content="This node is used for storing key-shares and running MPC algorithms.">
+          </div>
+          <div data-toggle="popover" class="server_tooltip"
+            id="aux_tooltip" data-placement="top"
+            title="Auxiliary"
+            data-trigger="hover"
+            data-content="This node is a stateless processing engine complementing the EP and Partner when performing crypto operations that use symmetric keys.">
+          </div>
+          <div data-toggle="popover" class="server_tooltip"
+          id="client_tooltip" data-placement="top"
+          title="Client"
+          data-trigger="hover"
+          data-content="This node has UKC client installed, runs the demo app, and can be used to access the UKC."
+           >
+          </div>
+        </div>
+      </div>
       <p>
         <a class="btn btn-lg btn-primary"
           href="/tokenization" role="button">Go to the tokenization demo »</a>
       </p>
     </div>
-  </div>
 </body>
 </html>
