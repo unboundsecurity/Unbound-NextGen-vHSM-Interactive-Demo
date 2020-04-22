@@ -251,3 +251,18 @@ code {
   page-break-before: avoid;
   padding-left: 3px;
 }
+
+code.codeblock {
+		display: block;
+    margin-bottom: 6pt;
+    color: #000000;
+    background-color: var(--UNBgray);
+    font-family: Consolas;
+    font-size: 10pt;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    border: solid 1px var(--UNBdarkgray);
+    page-break-before: avoid;
+    mc-disable-glossary-terms: true;
+}
