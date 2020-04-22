@@ -96,7 +96,7 @@ input[type=text] {
 
 body {
   min-height:2000px;
-  padding-top: 100px;
+  padding-top: 88px;
 }
 
 a.navbar-brand img {
@@ -133,7 +133,7 @@ a.navbar-brand img {
 }
 
 .container {
-  padding: 0px 25px;
+  padding: 25px;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
@@ -142,7 +142,10 @@ a.navbar-brand img {
 
 
 a {
-  color: var(--UNBmagenta);
+	color: #2D8DCC;
+  text-decoration: underline;
+  font-weight: normal;
+  font-family: 'Segoe UI Semibold';
 }
 
 .nav-pills { margin-bottom: 10px; }
@@ -167,7 +170,7 @@ a.navbar-brand {
 }
 
 html, body {
-  font-family: Source Sans Pro,Roboto;
+  font-family: Source Sans Pro,Roboto !important;
   font-size: 16px;
 }
 
@@ -211,10 +214,10 @@ form h2 {
   vertical-align: top;
 } */
 
-a:hover {
-  color: #252d3d;
-  text-decoration: none;
-}
+/* a:hover {
+	color: var(--UNBmagenta);
+  text-decoration: underline;
+} */
 
 .help_link:hover {
   border-color: #252d3d;
