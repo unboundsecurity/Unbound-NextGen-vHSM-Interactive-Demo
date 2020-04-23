@@ -21,7 +21,7 @@ Use these instructions to get UKC running using Docker.
  
 1. Download or clone this repository from the [main page](https://github.com/unbound-tech/vhsm_demo) or click [here](https://github.com/unbound-tech/vhsm_demo/archive/master.zip).
 1. If you downloaded a compressed (*.zip*) file, uncompress it. 
-1. The download contains a folder called *ukc-docker*. Open a terminal and navigate to the `ukc-docker` folder.
+1. The download contains a folder called *docker*. Open a terminal and navigate to the `docker` folder.
 
     **Note: All subsequent commands are run from a terminal from this directory.**
 1. Start Docker.
