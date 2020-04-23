@@ -1,9 +1,9 @@
-# 1. Unbound NextGen vHSM™ Interactive Demo
+# Unbound NextGen vHSM™ Interactive Demo
 
 The Unbound NextGen vHSM™ Interactive Demo provides a quick and easy way to evaluate the Unbound Key Control [UKC](https://www.unboundtech.com/product/unbound-key-control/) solution. UKC is composed of several components that need to be setup to work properly. Therefore, this quick start solution is provided to enable you to launch UKC without any configuration using Docker.
 
 
-## 1.1. Installation
+## 1. Installation
 
 Use these instructions to get UKC running using Docker.
     
@@ -55,13 +55,13 @@ Use these instructions to get UKC running using Docker.
 
 **Congratulations! UKC is now running.**
 
-## 1.2. Next Steps
+## 2. Next Steps
 After installation, you can try some of these tasks:
 1. [Explore the web interface](./#webint)
 1. [Integrate UKC with your system](./#integration)
 
 <a name="webint"></a>
-### 1.2.1. Explore the Web Interface
+### 2.1. Explore the Web Interface
 Open your browser and navigate to `http://localhost:8081` (for Windows) or `http://<docker-ip-address>:8081` (for Linux, where *docker-ip-address* is the server where you installed Docker). 
 
 The Web UI provides the following sections:
@@ -78,12 +78,12 @@ The Web UI provides the following sections:
 
 
 <a name="integration"></a>
-### 1.2.2. Integrate UKC with your system
+### 2.2. Integrate UKC with your system
 
 UKC can be integrated with 3rd-party tools, such as databases and web servers. See [here](https://www.unboundtech.com/docs/UKC/UKC_Integration_Guide/HTML/Content/Products/Unbound_Cover_Page.htm) for more information.
 
 <a name="update"></a>
-## 1.3. Restarting/Updating Docker
+## 3. Restarting/Updating Docker
 
 To update and restart Docker:
 
@@ -100,9 +100,9 @@ To update and restart Docker:
     docker-compose up
     ```
 
-## 1.4. Troubleshooting
+## 4. Troubleshooting
 
-### 1.4.1. Cannot open the web console
+### 4.1. Cannot open the web console
 
 If you cannot open the UKC web console in your browser, you might have port 443 in use by another service.
 
@@ -118,19 +118,19 @@ For example, to change the port from 443 to 9443:
     ```
 3. Use `https://localhost:9443/login` to open UKC web console.
 
-### 1.4.2. Virtualization
+### 4.2. Virtualization
 
 If you need to turn on virtualization on your Windows device, use these instructions:
 
 - Enable Hyper-V using the [instructions from Microsoft](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v).
 - You must [enable virtualization](https://blogs.technet.microsoft.com/canitpro/2015/09/08/step-by-step-enabling-hyper-v-for-use-on-windows-10/) in the BIOS on your device.
 
-### 1.4.3. UKC logs
+### 4.3. UKC logs
 You can see the UKC log files by logging into the Docker container for the EP and then finding the UKC logs. See [here](https://www.unboundtech.com/docs/UKC/UKC_User_Guide/HTML/Content/Products/UKC-EKM/UKC_User_Guide/Logs/A1.html) for more information about the UKC logs.
 
-## 1.5. Tips
+## 5. Tips
 
-### 1.5.1. Installing Docker on CentOS 7
+### 5.1. Installing Docker on CentOS 7
 
 The default Docker installed by `yum` is an older version of Docker. You can use the technique below to update to a newer Docker version.
 
@@ -145,5 +145,5 @@ sudo curl -L \
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
-## 1.6 Docker License
+## 6 Docker License
 See [here](https://docs.docker.com/docker-for-windows/opensource/) for information about Docker licensing.
