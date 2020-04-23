@@ -2,7 +2,6 @@
 
 The Unbound NextGen vHSM™ Interactive Demo provides a quick and easy way to evaluate the Unbound Key Control [UKC](https://www.unboundtech.com/product/unbound-key-control/) solution. UKC is composed of several components that need to be setup to work properly. Therefore, this quick start solution is provided to enable you to launch UKC without any configuration using Docker.
 
-**Note: This project is intended to be used for POCs, demos and development. For production, you can [Deploy UKC Using Terraform](../ukc-terraform/README.md).**
 
 ## 1.1. Installation
 
