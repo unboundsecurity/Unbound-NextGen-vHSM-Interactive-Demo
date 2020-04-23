@@ -107,7 +107,7 @@ To update and restart Docker:
 If you run `docker-compose up` and after a few minutes you still do not see the READY message, it probably means that there was an error starting up the Docker environment. You may have noticed that there were some error messages in the `docker-compose` output.
 
 If this happens, follow these steps:
-1. Stop the `docker-compose` process by pressing CTRL+c.
+1. Stop the `docker-compose` process by pressing Ctrl+c.
 1. Remove any running UKC containers: 
     ```
     docker rm -f ukc-client
