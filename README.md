@@ -102,6 +102,24 @@ To update and restart Docker:
 
 ## Troubleshooting
 
+### *docker-compose* hangs on startup
+
+If you run `docker-compose up` and after a few minutes you still do not see the READY message, it probably means that there was an error starting up the Docker environment. You may have noticed that there were some error messages in the `docker-compose` output.
+
+If this happens, follow these steps:
+1. Stop the `docker-compose` process by pressing CTRL+c.
+1. Remove any running UKC containers: 
+    ```
+    docker rm -f ukc-client
+    docker rm -f ukc-ep
+    docker rm -f ukc-partner
+    docker rm -f ukc-aux
+    ```
+1. Run `docker system prune`.
+1. Restart the docker service.
+1. Run `docker-compose pull` (in the directory where your UKC *docker-compose.yaml* file is located).
+1. Run `docker-compose up`.
+
 ### Cannot open the web console
 
 If you cannot open the UKC web console in your browser, you might have port 443 in use by another service.
