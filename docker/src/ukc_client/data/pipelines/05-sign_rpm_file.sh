@@ -2,6 +2,6 @@
 
 echo "#################################################################### RPM signer ####################################################################"
 
-echo "Sing on RPM"
+echo "Sign on RPM"
 ucl sign-rpm -i /setup/testfiles/pgdg-redhat-repo-latest.noarch.rpm -o out.rpm -n codeSigning
 
