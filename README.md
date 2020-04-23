@@ -1,6 +1,6 @@
-# 1. Deploy UKC Using Docker
+# 1. Unbound NextGen vHSM™ Interactive Demo
 
-This project provides a quick and easy way to evaluate the Unbound Key Control [UKC](https://www.unboundtech.com/product/unbound-key-control/) solution. UKC is composed of several components that need to be setup to work properly. Therefore, this quick start solution is provided to enable you to launch UKC without any configuration using Docker.
+The Unbound NextGen vHSM™ Interactive Demo provides a quick and easy way to evaluate the Unbound Key Control [UKC](https://www.unboundtech.com/product/unbound-key-control/) solution. UKC is composed of several components that need to be setup to work properly. Therefore, this quick start solution is provided to enable you to launch UKC without any configuration using Docker.
 
 **Note: This project is intended to be used for POCs, demos and development. For production, you can [Deploy UKC Using Terraform](../ukc-terraform/README.md).**
 
@@ -19,7 +19,7 @@ Use these instructions to get UKC running using Docker.
    - For Mac:
        - Install Docker Desktop (community edition) v2.1.0.5 or newer. Follow the instructions to [install Docker Desktop](https://docs.docker.com/compose/install/).
  
-1. Download or clone this repository from the [main page](https://github.com/unbound-tech/UKC-Express-Deploy) or click [here](https://github.com/unbound-tech/UKC-Express-Deploy/archive/master.zip).
+1. Download or clone this repository from the [main page](https://github.com/unbound-tech/vhsm_demo) or click [here](https://github.com/unbound-tech/vhsm_demo/archive/master.zip).
 1. If you downloaded a compressed (*.zip*) file, uncompress it. 
 1. The download contains a folder called *ukc-docker*. Open a terminal and navigate to the `ukc-docker` folder.
 
@@ -43,7 +43,7 @@ Use these instructions to get UKC running using Docker.
 1. The Docker installation uses a settings file, called [settings.env](./settings.env). Installation works with the default values set in this file, so you do not have to change anything in it. However, you may want take a look at it to see what settings can be configured before running the installation process. The settings are described in the file.
 1. Run Docker to create the UKC container:
 
-   **Note:** If you are restarting or trying to update UKC Express Deploy, refer to [Restarting/Updating Docker](#update).
+   **Note:** If you are restarting or trying to update the demo, refer to [Restarting/Updating Docker](#update).
    
     ```bash
     docker-compose pull
@@ -79,7 +79,7 @@ The Web UI provides the following sections:
 
 
 <a name="integration"></a>
-### 1.2.3. Integrate UKC with your system
+### 1.2.2. Integrate UKC with your system
 
 UKC can be integrated with 3rd-party tools, such as databases and web servers. See [here](https://www.unboundtech.com/docs/UKC/UKC_Integration_Guide/HTML/Content/Products/Unbound_Cover_Page.htm) for more information.
 
