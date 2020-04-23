@@ -42,6 +42,11 @@
       } catch(e) {
         console.log(e);
       }
+      if(m && m.match(/0x20/i)) {
+        m = "Input cannot be tokenized.\nPlease verify your input is correct.";
+      } else if(m && m.match(/0x40/i)) {
+        m = "Input cannot be detokenized.\nPlease verify your input is a valid token.";
+      }
       alert(m);
     }
 
