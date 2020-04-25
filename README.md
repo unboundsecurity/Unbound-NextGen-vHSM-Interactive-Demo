@@ -110,10 +110,7 @@ If this happens, follow these steps:
 1. Stop the `docker-compose` process by pressing Ctrl+c.
 1. Remove any running UKC containers: 
     ```
-    docker rm -f ukc-client
-    docker rm -f ukc-ep
-    docker rm -f ukc-partner
-    docker rm -f ukc-aux
+    docker rm -f ukc-client ukc-ep ukc-partner ukc-aux
     ```
 1. Run `docker system prune`.
 1. Restart the docker service.
