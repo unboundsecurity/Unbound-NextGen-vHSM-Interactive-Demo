@@ -7,6 +7,9 @@ ep() {
     echo "Waiting for $1..."
     until ping -c1 $1 &>/dev/null; do :; done
     echo "$1 is up"
+    echo "Waiting for $2..."
+    until ping -c1 $2 &>/dev/null; do :; done
+    echo "$2 is up"
     start
   else
     echo "Setting up UKC entry point before first start"
@@ -14,6 +17,9 @@ ep() {
     echo "Waiting for $1..."
     until ping -c1 $1 &>/dev/null; do :; done
     echo "$1 is up"
+    echo "Waiting for $2..."
+    until ping -c1 $2 &>/dev/null; do :; done
+    echo "$2 is up"
     /opt/ekm/bin/ekm_boot_ep.sh -s $HOSTNAME -p $1 -x $2 -f -w Password1!
     start
     echo "Checking UKC system..."
@@ -75,6 +81,8 @@ partner() {
     echo "Waiting for $1..."
     until ping -c1 $1 &>/dev/null; do :; done
     echo "$1 is up"
+    until ping -c1 $2 &>/dev/null; do :; done
+    echo "$2 is up"
     start
   else
     echo "Setting up UKC partner before first start"
@@ -82,6 +90,9 @@ partner() {
     echo "Waiting for $1..."
     until ping -c1 $1 &>/dev/null; do :; done
     echo "$1 is up"
+    echo "Waiting for $2..."
+    until ping -c1 $2 &>/dev/null; do :; done
+    echo "$2 is up"
     /opt/ekm/bin/ekm_boot_partner.sh -s $HOSTNAME -p $1 -x $2 -f
     start
 
@@ -93,9 +104,21 @@ partner() {
 aux() {
   if [ -e "/ukc-installed" ]; then
     echo "Starting UKC AUX"
+    echo "Waiting for $1..."
+    until ping -c1 $1 &>/dev/null; do :; done
+    echo "$1 is up"
+    echo "Waiting for $2..."
+    until ping -c1 $2 &>/dev/null; do :; done
+    echo "$2 is up"
     start
   else
     echo "Setting up UKC AUX before first start"
+    echo "Waiting for $1..."
+    until ping -c1 $1 &>/dev/null; do :; done
+    echo "$1 is up"
+    echo "Waiting for $2..."
+    until ping -c1 $2 &>/dev/null; do :; done
+    echo "$2 is up"
     # install
     /opt/ekm/bin/ekm_boot_auxiliary.sh -s $HOSTNAME -e $1 -p $2 -f
     start
