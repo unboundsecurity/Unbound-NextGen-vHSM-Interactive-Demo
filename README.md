@@ -7,7 +7,7 @@ The Unbound NextGen vHSM™ Interactive Demo provides a quick and easy way to ev
 
 Use these instructions to get UKC running using Docker.
     
-1. If you are not registered for Docker, follow the [registration process](https://hub.docker.com/?overlay=onboarding).
+1. If you are not registered for Docker, follow the <a href="https://hub.docker.com/?overlay=onboarding" target="_blank">registration process</a>.
 1. [Contact Unbound](https://www.unboundtech.com/company/contact-us/) and provide us with your Docker username to get access to the Docker images.
 1. Install Docker.
     - For Windows:
