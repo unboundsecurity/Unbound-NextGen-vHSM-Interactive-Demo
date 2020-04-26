@@ -2,36 +2,38 @@
 set -e
 
 ep() {
-  if [ -e "/ukc-installed" ]; then
-    echo "Starting UKC entry point"
-    echo "Waiting for $1..."
-    until ping -c1 $1 &>/dev/null; do :; done
-    echo "$1 is up"
-    echo "Waiting for $2..."
-    until ping -c1 $2 &>/dev/null; do :; done
-    echo "$2 is up"
-    start
-  else
-    echo "Setting up UKC entry point before first start"
-    # install
-    echo "Waiting for $1..."
-    until ping -c1 $1 &>/dev/null; do :; done
-    echo "$1 is up"
-    echo "Waiting for $2..."
-    until ping -c1 $2 &>/dev/null; do :; done
-    echo "$2 is up"
-    /opt/ekm/bin/ekm_boot_ep.sh -s $HOSTNAME -p $1 -x $2 -f -w Password1!
-    start
-    echo "Checking UKC system..."
-    until ucl server test &>/dev/null; do :; done
-    echo "UKC system is installed"
+  if [ ! -d /var/lib/ekm/data/database ]; then
+    if [ -e "/ukc-installed" ]; then
+      echo "Starting UKC entry point"
+      echo "Waiting for $1..."
+      until ping -c1 $1 &>/dev/null; do :; done
+      echo "$1 is up"
+      echo "Waiting for $2..."
+      until ping -c1 $2 &>/dev/null; do :; done
+      echo "$2 is up"
+      start
+    else
+      echo "Setting up UKC entry point before first start"
+      # install
+      echo "Waiting for $1..."
+      until ping -c1 $1 &>/dev/null; do :; done
+      echo "$1 is up"
+      echo "Waiting for $2..."
+      until ping -c1 $2 &>/dev/null; do :; done
+      echo "$2 is up"
+      /opt/ekm/bin/ekm_boot_ep.sh -s $HOSTNAME -p $1 -x $2 -f -w Password1! 2>/dev/null
+      start
+      echo "Checking UKC system..."
+      until ucl server test &>/dev/null; do :; done
+      echo "UKC system is installed"
 
-    post_install
+      post_install
 
-    service ekm restart
+      #service ekm restart
 
-    echo "UKC system is ready"
-    touch /ukc-installed
+      echo "UKC system is ready"
+      touch /ukc-installed
+    fi
   fi
 }
 
@@ -39,13 +41,13 @@ post_install() {
   echo "Executing post install commands"
   if [ "$UKC_NOCERT" == "true" ]
   then
-    ucl system-settings set -k no-cert -v 1 -w Password1!
+    ucl system-settings set -k no-cert -v 1 -w Password1! 2>/dev/null
   fi
 
   if [ ! -z "$UKC_PARTITION" ] && [ ! -z "$UKC_PASSWORD" ]
   then
     echo "Creating partition: $UKC_PARTITION"
-    ucl partition create -p $UKC_PARTITION -w Password1! -s $UKC_PASSWORD
+    ucl partition create -p $UKC_PARTITION -w Password1! -s $UKC_PASSWORD 2>/dev/null
 
     # echo "Changing partition 'so' password"
     # ucl user change-pwd -p $UKC_PARTITION -w Password1! -d $UKC_PASSWORD
@@ -54,82 +56,87 @@ post_install() {
   if [ ! -z "$UKC_PARTITION" ] && [ ! -z "$UKC_PARTITION_USER_PASSWORD" ]
   then
     echo "Changing '$UKC_PARTITION' partition 'user' password"
-    ucl user change-pwd --user user -p $UKC_PARTITION -d $UKC_PARTITION_USER_PASSWORD
+    ucl user change-pwd --user user -p $UKC_PARTITION -d $UKC_PARTITION_USER_PASSWORD 2>/dev/null
   fi
 
   if [ ! -z "$UKC_PASSWORD" ]
   then
     echo "Changing 'root' partition 'so' password"
-    ucl user change-pwd -p root -w Password1! -d $UKC_PASSWORD
+    ucl user change-pwd -p root -w Password1! -d $UKC_PASSWORD 2>/dev/null
   fi
 
   # set server default certificate expiration to comply with Google trust maximum 825 days
-  ucl system-settings set -k server-exp -v 730 -w $UKC_PASSWORD
+  ucl system-settings set -k server-exp -v 730 -w $UKC_PASSWORD 2>/dev/null
 
   if [ ! -z "$UKC_CERTIFICATE_HOST_NAME" ]
   then
     echo "Adding additional hostnames and IP addresses: $UKC_CERTIFICATE_HOST_NAME"
-    /opt/ekm/bin/ekm_renew_server_certificate.sh --name $UKC_CERTIFICATE_HOST_NAME
+    /opt/ekm/bin/ekm_renew_server_certificate.sh --name $UKC_CERTIFICATE_HOST_NAME 2>/dev/null
   fi
 
 }
 
 
 partner() {
-  if [ -e "/ukc-installed" ]; then
-    echo "Starting UKC partner"
-    echo "Waiting for $1..."
-    until ping -c1 $1 &>/dev/null; do :; done
-    echo "$1 is up"
-    until ping -c1 $2 &>/dev/null; do :; done
-    echo "$2 is up"
-    start
-  else
-    echo "Setting up UKC partner before first start"
-    # install
-    echo "Waiting for $1..."
-    until ping -c1 $1 &>/dev/null; do :; done
-    echo "$1 is up"
-    echo "Waiting for $2..."
-    until ping -c1 $2 &>/dev/null; do :; done
-    echo "$2 is up"
-    /opt/ekm/bin/ekm_boot_partner.sh -s $HOSTNAME -p $1 -x $2 -f
-    start
+  if [ ! -d /var/lib/ekm/data/database ]; then
+    if [ -e "/ukc-installed" ]; then
+      echo "Starting UKC partner"
+      echo "Waiting for $1..."
+      until ping -c1 $1 &>/dev/null; do :; done
+      echo "$1 is up"
+      until ping -c1 $2 &>/dev/null; do :; done
+      echo "$2 is up"
+      start
+    else
+      echo "Setting up UKC partner before first start"
+      # install
+      echo "Waiting for $1..."
+      until ping -c1 $1 &>/dev/null; do :; done
+      echo "$1 is up"
+      echo "Waiting for $2..."
+      until ping -c1 $2 &>/dev/null; do :; done
+      echo "$2 is up"
+      /opt/ekm/bin/ekm_boot_partner.sh -s $HOSTNAME -p $1 -x $2 -f 2>/dev/null
+      start
 
-    echo "UKC partner is ready"
-    touch /ukc-installed
+      echo "UKC partner is ready"
+      touch /ukc-installed
+    fi
   fi
 }
 
 aux() {
-  if [ -e "/ukc-installed" ]; then
-    echo "Starting UKC AUX"
-    echo "Waiting for $1..."
-    until ping -c1 $1 &>/dev/null; do :; done
-    echo "$1 is up"
-    echo "Waiting for $2..."
-    until ping -c1 $2 &>/dev/null; do :; done
-    echo "$2 is up"
-    start
-  else
-    echo "Setting up UKC AUX before first start"
-    echo "Waiting for $1..."
-    until ping -c1 $1 &>/dev/null; do :; done
-    echo "$1 is up"
-    echo "Waiting for $2..."
-    until ping -c1 $2 &>/dev/null; do :; done
-    echo "$2 is up"
-    # install
-    /opt/ekm/bin/ekm_boot_auxiliary.sh -s $HOSTNAME -e $1 -p $2 -f
-    start
+  if [ ! -d /var/lib/ekm/data/database ]; then
+    if [ -e "/ukc-installed" ]; then
+      echo "Starting UKC AUX"
+      echo "Waiting for $1..."
+      until ping -c1 $1 &>/dev/null; do :; done
+      echo "$1 is up"
+      echo "Waiting for $2..."
+      until ping -c1 $2 &>/dev/null; do :; done
+      echo "$2 is up"
+      start
+    else
+      echo "Setting up UKC AUX before first start"
+      echo "Waiting for $1..."
+      until ping -c1 $1 &>/dev/null; do :; done
+      echo "$1 is up"
+      echo "Waiting for $2..."
+      until ping -c1 $2 &>/dev/null; do :; done
+      echo "$2 is up"
+      # install
+      /opt/ekm/bin/ekm_boot_auxiliary.sh -s $HOSTNAME -e $1 -p $2 -f 2>/dev/null
+      start
 
-    echo "UKC AUX is ready"
-    touch /ukc-installed
+      echo "UKC AUX is ready"
+      touch /ukc-installed
+    fi
   fi
 }
 
 start() {
-  service ekm start
+  echo "Start UKC service"
+  service ekm start &>/dev/null
 }
 
 case "$1" in
