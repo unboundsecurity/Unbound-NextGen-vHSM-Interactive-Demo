@@ -55,13 +55,7 @@ Use these instructions to get UKC running using Docker.
 
 **Congratulations! UKC is now running.**
 
-## Next Steps
-After installation, you can try some of these tasks:
-1. [Explore the web interface](./#webint)
-1. [Integrate UKC with your system](./#integration)
-
-<a name="webint"></a>
-### Explore the Web Interface
+## Next Step - Explore the Web Interface
 Open your browser and navigate to `http://localhost:8081` (for Windows) or `http://<docker-ip-address>:8081` (for Linux, where *docker-ip-address* is the server where you installed Docker). 
 
 The Web UI provides the following sections:
@@ -76,11 +70,6 @@ The Web UI provides the following sections:
 4. Logs - view the logs for the UKC servers. This can be helpful to view after running tokenization/de-tokenization operations.
 5. Resources - links to more information about UKC, the SDE API, and 
 
-
-<a name="integration"></a>
-### Integrate UKC with your system
-
-UKC can be integrated with 3rd-party tools, such as databases and web servers. See [here](https://www.unboundtech.com/docs/UKC/UKC_Integration_Guide/HTML/Content/Products/Unbound_Cover_Page.htm) for more information.
 
 <a name="update"></a>
 ## Restarting/Updating Docker
