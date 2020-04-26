@@ -2,7 +2,7 @@ FROM unboundukc/centos7:2004
 
 #install UKC
 # ARG UKC_RPM=ekm-2.0.2004.42976.el7.x86_64.rpm
-ARG UKC_RPM=ekm-2.0.2001.42928.el7.x86_64.rpm
+ARG UKC_RPM=ekm-2.0.2001.41853.el7.x86_64.rpm
 COPY data/$UKC_RPM /
 RUN rpm -i /$UKC_RPM
 RUN rm /$UKC_RPM

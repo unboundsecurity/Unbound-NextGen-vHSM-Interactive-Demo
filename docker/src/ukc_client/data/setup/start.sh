@@ -28,15 +28,16 @@ curl "https://ukc-ep/api/v1/users/user/password?partitionId=$UKC_PARTITION" \
     -H 'Content-Type: application/json' \
     --user 'so@test:Unbound1!' \
     --compressed --insecure \
+    --output /dev/null --silent \
     --data-binary "{\"password\":\"\"}"
 
 
 echo "Create certificates"
 ./setup/create_certificates.sh
 
-if ! ucl show -n $UKC_FPE_KEY; then
+if ! ucl list -n $UKC_FPE_KEY -t PRF | grep PRF; then
   echo "Creating key '$UKC_FPE_KEY' for tokenization"
-  ucl generate -n $UKC_FPE_KEY -t PRF
+  ucl generate -n $UKC_FPE_KEY -t PRF 2>/dev/null
 fi
 
 if [ "$VHSM_DEMO_USE_HTTPS" = "true" ]; then
@@ -100,8 +101,8 @@ if [ "$VHSM_DEMO_USE_HTTPS" = "true" ]; then
               -config <(cat $OPENSSL_CONF \
                   <(printf "\n[SAN]\nsubjectAltName=DNS:localhost,DNS:192.168.0.1"))
             # change the key name - find it as it will be the only one with UID as name
-            ucl change-info -u $(ucl list | grep -Po '(0x00\w+)') --newname $VHSM_DEMO_TLS_KEY_ALIAS
-            ucl import -i ukc-demo.cer -p test --name $VHSM_DEMO_TLS_KEY_ALIAS
+            ucl change-info -u $(ucl list | grep -Po '(0x00\w+)') --newname $VHSM_DEMO_TLS_KEY_ALIAS 2>/dev/null
+            ucl import -i ukc-demo.cer -p test --name $VHSM_DEMO_TLS_KEY_ALIAS 2>/dev/null
             ;;
 
           EC)
