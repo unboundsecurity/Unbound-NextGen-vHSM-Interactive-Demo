@@ -27,7 +27,7 @@ Use these instructions to get UKC running using Docker.
 1. Check that Docker is running.
 
     You can check if Docker is running with the command `docker info`. If it returns an error, then it is not running. Otherwise, it returns status information about the Docker installation.
-1. Open a terminal and navigate to the `ukc-docker` folder.
+1. Open a terminal and navigate to the `docker` folder.
 1. Run this command to log into Docker:
     ```bash
 	docker login
