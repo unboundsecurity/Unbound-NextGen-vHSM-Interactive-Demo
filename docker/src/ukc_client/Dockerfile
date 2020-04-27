@@ -1,6 +1,6 @@
 FROM unboundukc/centos8:2004
 
-ARG UKC_CLIENT_RPM=ekm-client-2.0.2001.42407-el7+el8.x86_64.rpm
+ARG UKC_CLIENT_RPM=ekm-client-2.0.2001.41853-el7+el8.x86_64.rpm
 
 COPY data/$UKC_CLIENT_RPM /
 RUN rpm -ivh /$UKC_CLIENT_RPM
