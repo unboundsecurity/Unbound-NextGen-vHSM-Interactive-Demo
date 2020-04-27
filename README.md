@@ -50,13 +50,13 @@ Use these instructions to get UKC running using Docker.
     ```
     The setup takes several minutes to complete.
 	
-1. Wait until you see a large **READY** message. This message means that everything is installed and working.
+1. Wait until you see a large **READY** message. This message means that everything is installed and working. Note that you may see some errors during the install process, but as long as you get the **READY** message, UKC was installed correctly.
     
 
 **Congratulations! UKC is now running.**
 
 ## Next Step - Explore the Web Interface
-Open your browser and navigate to `http://localhost:8081` (for Windows) or `http://<docker-ip-address>:8081` (for Linux, where *docker-ip-address* is the server where you installed Docker). 
+Open your browser and navigate to `http://localhost:8081` (for Windows and Mac) or `http://<docker-ip-address>:8081` (for Linux, where *docker-ip-address* is the server where you installed Docker). 
 
 The Web UI provides the following sections:
 
