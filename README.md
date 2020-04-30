@@ -6,7 +6,7 @@ The Unbound NextGen vHSM™ Interactive Demo provides a quick and easy way to ev
 ## Installation
 
 Use these instructions to get UKC running using Docker.
-    
+
 1. If you are not registered for Docker, follow the <a href="https://hub.docker.com/?overlay=onboarding" target="_blank">registration process</a> (It is recommended to open this link in a new tab).
 1. [Contact Unbound](https://www.unboundtech.com/company/contact-us/) and provide us with your Docker username to get access to the Docker images.
 1. Install Docker.
@@ -17,52 +17,52 @@ Use these instructions to get UKC running using Docker.
         - Follow the instructions to [install Docker Compose](https://docs.docker.com/compose/install/).
    - For Mac:
        - Install Docker Desktop (community edition) v2.1.0.5 or newer. Follow the instructions to [install Docker Desktop](https://docs.docker.com/compose/install/).
- 
+
 1. Download or clone this repository from the [main page](https://github.com/unbound-tech/vhsm_demo) or click [here](https://github.com/unbound-tech/vhsm_demo/archive/master.zip).
-1. If you downloaded a compressed (*.zip*) file, uncompress it. 
-1. The download contains a folder called *docker*. Open a terminal (such as *cmd* or *PowerShell* on Windows) and navigate to the `docker` folder.
+1. If you downloaded a compressed (*.zip*) file, uncompress it.
+1. The download contains a folder called *ukc-docker*. Open a terminal (such as *cmd* or *PowerShell* on Windows) and navigate to the `ukc-docker` folder.
 
     **Note: All subsequent commands are run from a terminal from this directory.**
-1. Start Docker. 
-    - On Windows and Mac, start the Docker program. 
+1. Start Docker.
+    - On Windows and Mac, start the Docker program.
     - On Linux, run *docker* from the command line in a shell with administrator privileges.
 1. Check that Docker is running.
 
-    You can check if Docker is running with the command `docker info`. 
+    You can check if Docker is running with the command `docker info`.
     - If it returns an error, then it is not running. This error may happen if Docker was run without administrator privileges.
     - On success, it returns status information about the Docker installation.
-1. Open a terminal and navigate to the `docker` folder.
+1. Open a terminal and navigate to the `ukc-docker` folder.
 1. Run this command to log into Docker:
     ```bash
 	docker login
 	```
 	Enter the credentials that you created for the Docker Hub website.
-	
+
 	After successful login you see:
     ````
     Login Succeeded
     ````
-    
-1. The Docker installation uses a settings file, called [settings.env](./settings.env). This file is located in the root of the `docker` folder that was downloaded in step 6.
-    
+
+1. The Docker installation uses a settings file, called [settings.env](./settings.env). This file is located in the root of the `ukc-docker` folder that was downloaded in step 6.
+
     Installation works with the default values set in this file, so you do not have to change anything in it. However, you may want take a look at it to see what settings can be configured before running the installation process. The settings are described in the file.
 1. Run Docker to create the UKC container:
 
    **Note:** If you are restarting or trying to update the demo, refer to [Restarting/Updating Docker](#update).
-   
+
     ```bash
     docker-compose pull
     docker-compose up
     ```
     The setup takes several minutes to complete.
-	
+
 1. Wait until you see a large **READY** message. This message means that everything is installed and working. Note that you may see some errors during the install process, but as long as you get the **READY** message, UKC was installed correctly.
-    
+
 
 **Congratulations! UKC is now running.**
 
 ## Next Step - Explore the Web Interface
-Open your browser and navigate to `http://localhost:8081` (for Windows and Mac) or `http://<docker-ip-address>:8081` (for Linux, where *docker-ip-address* is the server where you installed Docker). 
+Open your browser and navigate to `http://localhost:8081` (for Windows and Mac) or `http://<docker-ip-address>:8081` (for Linux, where *docker-ip-address* is the server where you installed Docker).
 
 The Web UI provides the following sections:
 
@@ -74,7 +74,7 @@ The Web UI provides the following sections:
     For more information on how to use the web interface, see [UKC User Guide](https://www.unboundtech.com/docs/UKC/UKC_User_Guide/HTML/Content/Products/UKC-EKM/UKC_User_Guide/UI/A1.html).
 3. CLI - get access to the UKC client command line interface.
 4. Logs - view the logs for the UKC servers. This can be helpful to view after running tokenization/de-tokenization operations.
-5. Resources - links to more information about UKC, the SDE API, and 
+5. Resources - links to more information about UKC, the SDE API, and
 
 
 <a name="update"></a>
@@ -103,7 +103,7 @@ If you run `docker-compose up` and after a few minutes you still do not see the 
 
 If this happens, follow these steps:
 1. Stop the `docker-compose` process by pressing Ctrl+c.
-1. Remove any running UKC containers: 
+1. Remove any running UKC containers:
     ```
     docker rm -f ukc-client ukc-ep ukc-partner ukc-aux
     ```
@@ -118,8 +118,8 @@ If you cannot open the UKC web console in your browser, you might have port 443 
 
 You can change UKC web console port by editing `docker-compose.yml`, and replacing the UKC export port with a different port.
 
-For example, to change the port from 443 to 9443: 
-1. Change `"443:443"` to `"9443:443"`. 
+For example, to change the port from 443 to 9443:
+1. Change `"443:443"` to `"9443:443"`.
 2. Restart the Docker with:
 
     ```bash
