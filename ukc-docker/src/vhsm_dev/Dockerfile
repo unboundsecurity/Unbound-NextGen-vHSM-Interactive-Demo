@@ -46,7 +46,7 @@ RUN mvn install:install-file \
 #RUN rm -rf /unbound_crypto_server
 
 #COPY data/ukc-vhsm-server-0.0.1.jar /unbound_vhsm/
-COPY data/start.sh .
+COPY data/start.sh ./setup/
 #CMD mvn  -X clean install -pl component -P profile
 #CMD mvn  -X clean install -P profile
 CMD tail -f /dev/null
