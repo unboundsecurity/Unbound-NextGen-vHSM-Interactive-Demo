@@ -109,6 +109,10 @@ If this happens, follow these steps:
     ```
     docker rm -f ukc-client ukc-ep ukc-partner ukc-aux
     ```
+1. Remove existing images:
+    ```
+    docker rmi -f unboundukc/ukc-vhsm:2001  unboundukc/vhsm-client:2001
+    ```
 1. Run `docker system prune`.
 1. Restart the docker service.
 1. Run `docker-compose pull` (in the directory where your UKC *docker-compose.yaml* file is located).
