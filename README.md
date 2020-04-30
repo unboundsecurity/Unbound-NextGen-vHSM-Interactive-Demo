@@ -114,7 +114,7 @@ If this happens, follow these steps:
     docker rmi -f unboundukc/ukc-vhsm:2001  unboundukc/vhsm-client:2001
     ```
 1. Run `docker system prune`.
-1. Restart the docker service.
+1. Restart the docker service by clicking on the docker-whale icon on the system menu bar (Mac) or System tray (Windows) and choosing *Restart*
 1. Run `docker-compose pull` (in the directory where your UKC *docker-compose.yaml* file is located).
 1. Run `docker-compose up`.
 
