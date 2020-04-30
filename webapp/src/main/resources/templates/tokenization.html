@@ -51,7 +51,7 @@
     }
 
     $(function() {
-      ['CreditCard', 'Email', 'SSN', 'Phone'].forEach((name) => {
+      ['CreditCard', 'SSN', 'Phone'].forEach((name) => {
         $(`button#tokenize${name}`).click(function(e) {
           e.preventDefault();
           var clearText = $(`#tokenize${name}Cleartext`).val();
@@ -242,7 +242,7 @@
       </fieldset>
     </form>
 
-    <form class="form-horizontal" method="post" action="#">
+    <!-- <form class="form-horizontal" method="post" action="#">
       <fieldset>
         <h2>Email Tokenization</h2>
         <div class="control-group">
@@ -262,7 +262,7 @@
           <button class="btn btn-primary" id="detokenizeEmail" type="submit">Detokenize</button>
         </div>
       </fieldset>
-    </form>
+    </form> -->
 
     <form class="form-horizontal" method="post" action="#">
       <fieldset>
