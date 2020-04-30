@@ -37,7 +37,7 @@ echo "Create certificates"
 
 if ! ucl list -n $UKC_FPE_KEY -t PRF | grep PRF; then
   echo "Creating key '$UKC_FPE_KEY' for tokenization"
-  ucl generate -n $UKC_FPE_KEY -t PRF 2>/dev/null
+  ucl generate -n $UKC_FPE_KEY -t PRF
 fi
 
 if [ "$VHSM_DEMO_USE_HTTPS" = "true" ]; then
@@ -101,8 +101,8 @@ if [ "$VHSM_DEMO_USE_HTTPS" = "true" ]; then
               -config <(cat $OPENSSL_CONF \
                   <(printf "\n[SAN]\nsubjectAltName=DNS:localhost,DNS:192.168.0.1"))
             # change the key name - find it as it will be the only one with UID as name
-            ucl change-info -u $(ucl list | grep -Po '(0x00\w+)') --newname $VHSM_DEMO_TLS_KEY_ALIAS 2>/dev/null
-            ucl import -i ukc-demo.cer -p test --name $VHSM_DEMO_TLS_KEY_ALIAS 2>/dev/null
+            ucl change-info -u $(ucl list | grep -Po '(0x00\w+)') --newname $VHSM_DEMO_TLS_KEY_ALIAS
+            ucl import -i ukc-demo.cer -p test --name $VHSM_DEMO_TLS_KEY_ALIAS
             ;;
 
           EC)

@@ -22,4 +22,4 @@ ACTIVATION_CODE=$(curl "https://ukc-ep/api/v1/clients?partitionId=$PARTITION" \
 ACTIVATION_CODE=$(echo $ACTIVATION_CODE | jq -r '.activationCode')
 
 echo "Activation code is $ACTIVATION_CODE"
-ucl register -p $PARTITION -n $CLIENT -c $ACTIVATION_CODE 2>/dev/null
+ucl register -p $PARTITION -n $CLIENT -c $ACTIVATION_CODE
