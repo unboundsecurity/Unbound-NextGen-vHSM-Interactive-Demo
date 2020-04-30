@@ -74,13 +74,13 @@ public class ApiController {
   @PostMapping(path = "/tokenizeCreditCard", consumes = "text/plain", produces = "text/plain")
   public String tokenizeCreditCard(@RequestBody String clearText) {
     SDESessionKey sk = UnboundUtil.getSdeSessionKey(DEFAULT_TWEAK, SDEKey.PURPOSE_CREDIT_CARD_ENC);
-    return sk.encryptCreditCard(clearText);
+    return sk.encryptCreditCard(clearText.trim());
   }
 
   @PostMapping(path = "/detokenizeCreditCard", consumes = "text/plain", produces = "text/plain")
   public String detokenizeCreditCard(@RequestBody String cypherText) {
     SDESessionKey sk = UnboundUtil.getSdeSessionKey(DEFAULT_TWEAK, SDEKey.PURPOSE_CREDIT_CARD_ENC);
-    return sk.decryptCreditCard(cypherText);
+    return sk.decryptCreditCard(cypherText.trim());
   }
 
   @PostMapping(path = "/tokenizeEmail", consumes = "text/plain", produces = "text/plain")
@@ -88,37 +88,37 @@ public class ApiController {
     SDESessionKey sk = UnboundUtil.getSdeSessionKey(DEFAULT_TWEAK, SDEKey.PURPOSE_EMAIL_ENC);
     // String txt = sk.encryptEMailAddress("adam.ilan@unboundtech.com", 100);
     // return txt;
-    return sk.encryptEMailAddress(clearText, 50);
+    return sk.encryptEMailAddress(clearText.trim(), 50);
   }
 
   @PostMapping(path = "/detokenizeEmail", consumes = "text/plain", produces = "text/plain")
   public String detokenizeEmail(@RequestBody String cypherText) {
     SDESessionKey sk = UnboundUtil.getSdeSessionKey(DEFAULT_TWEAK, SDEKey.PURPOSE_EMAIL_ENC);
-    return sk.decryptEMailAddress(cypherText);
+    return sk.decryptEMailAddress(cypherText.trim());
   }
 
   @PostMapping(path = "/tokenizeSSN", consumes = "text/plain", produces = "text/plain")
   public String tokenizeSSN(@RequestBody String clearText) {
     SDESessionKey sk = UnboundUtil.getSdeSessionKey(DEFAULT_TWEAK, SDEKey.PURPOSE_SSN_ENC);
-    return sk.encryptSSN(clearText, "###-##-####");
+    return sk.encryptSSN(clearText.trim(), "###-##-####");
   }
 
   @PostMapping(path = "/detokenizeSSN", consumes = "text/plain", produces = "text/plain")
   public String detokenizeSSN(@RequestBody String cypherText) {
     SDESessionKey sk = UnboundUtil.getSdeSessionKey(DEFAULT_TWEAK, SDEKey.PURPOSE_SSN_ENC);
-    return sk.decryptSSN(cypherText, "###-##-####"  );
+    return sk.decryptSSN(cypherText.trim(), "###-##-####"  );
   }
 
   @PostMapping(path = "/tokenizePhone", consumes = "text/plain", produces = "text/plain")
   public String tokenizePhone(@RequestBody String clearText) {
     SDESessionKey sk = UnboundUtil.getSdeSessionKey(DEFAULT_TWEAK, SDEKey.PURPOSE_US_PHONE_ENC);
-    return sk.encryptUSPhone(clearText, "###-###-####");
+    return sk.encryptUSPhone(clearText.trim(), "###-###-####");
   }
 
   @PostMapping(path = "/detokenizePhone", consumes = "text/plain", produces = "text/plain")
   public String detokenizePhone(@RequestBody String cypherText) {
     SDESessionKey sk = UnboundUtil.getSdeSessionKey(DEFAULT_TWEAK, SDEKey.PURPOSE_US_PHONE_ENC);
-    return sk.decryptUSPhone(cypherText, "###-###-####"  );
+    return sk.decryptUSPhone(cypherText.trim(), "###-###-####"  );
   }
 
   @PostMapping(path = "/encrypt", consumes = "text/plain", produces = "text/plain")
