@@ -54,9 +54,11 @@ Use these instructions to get UKC running using Docker.
     docker-compose pull
     docker-compose up
     ```
-    The setup takes several minutes to complete.
+    The setup takes several minutes to complete. During this time, Docker creates multiple containers for CASP, CASP database, CASP client, and UKC servers. It also creates the CASP user, client, keys, and more.
 
-1. Wait until you see a large **READY** message. This message means that everything is installed and working. Note that you may see some errors during the install process, but as long as you get the **READY** message, UKC was installed correctly.
+1. Wait until you see a large **READY** message. This message means that everything is installed and working. You may see some errors during the install process, but as long as you get the **READY** message, UKC was installed correctly.
+
+    **Note:** Do not close the terminal window. Closing it terminates the Docker containers.
 
 
 **Congratulations! UKC is now running.**
