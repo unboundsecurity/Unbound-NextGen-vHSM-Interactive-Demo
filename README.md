@@ -23,10 +23,14 @@ Use these instructions to get UKC running using Docker.
 1. The download contains a folder called *docker*. Open a terminal (such as *cmd* or *PowerShell* on Windows) and navigate to the `docker` folder.
 
     **Note: All subsequent commands are run from a terminal from this directory.**
-1. Start Docker.
+1. Start Docker. 
+    - On Windows and Mac, start the Docker program. 
+    - On Linux, run *docker* from the command line in a shell with administrator privileges.
 1. Check that Docker is running.
 
-    You can check if Docker is running with the command `docker info`. If it returns an error, then it is not running. Otherwise, it returns status information about the Docker installation.
+    You can check if Docker is running with the command `docker info`. 
+    - If it returns an error, then it is not running. This error may happen if Docker was run without administrator privileges.
+    - On success, it returns status information about the Docker installation.
 1. Open a terminal and navigate to the `docker` folder.
 1. Run this command to log into Docker:
     ```bash
@@ -39,7 +43,9 @@ Use these instructions to get UKC running using Docker.
     Login Succeeded
     ````
     
-1. The Docker installation uses a settings file, called [settings.env](./settings.env). Installation works with the default values set in this file, so you do not have to change anything in it. However, you may want take a look at it to see what settings can be configured before running the installation process. The settings are described in the file.
+1. The Docker installation uses a settings file, called [settings.env](./settings.env). This file is located in the root of the `docker` folder that was downloaded in step 6.
+    
+    Installation works with the default values set in this file, so you do not have to change anything in it. However, you may want take a look at it to see what settings can be configured before running the installation process. The settings are described in the file.
 1. Run Docker to create the UKC container:
 
    **Note:** If you are restarting or trying to update the demo, refer to [Restarting/Updating Docker](#update).
