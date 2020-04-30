@@ -30,7 +30,7 @@ curl "https://ukc-ep/api/v1/users/user/password?partitionId=$UKC_PARTITION" \
 
 if ! ucl show -n $UKC_FPE_KEY; then
   echo "Creating key '$UKC_FPE_KEY' for tokenization"
-  ucl generate -n $UKC_FPE_KEY -t PRF
+  ucl generate -n $UKC_FPE_KEY -t PRF --desc "Used for tokenisation"
 fi
 
 if [ "$VHSM_DEMO_USE_HTTPS" = "true" ]; then

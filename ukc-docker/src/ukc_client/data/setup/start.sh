@@ -37,7 +37,7 @@ echo "Create certificates"
 
 if ! ucl list -n $UKC_FPE_KEY -t PRF | grep PRF; then
   echo "Creating key '$UKC_FPE_KEY' for tokenization"
-  ucl generate -n $UKC_FPE_KEY -t PRF
+  ucl generate -n $UKC_FPE_KEY -t PRF --desc "Used for tokenisation"
 fi
 
 if [ "$VHSM_DEMO_USE_HTTPS" = "true" ]; then
@@ -131,4 +131,3 @@ fi #if [ "$VHSM_DEMO_USE_HTTPS" = "true" ]
 echo "Starting vHSM app"
 /setup/wait_until_ready.sh &
 java -jar /opt/unbound_vhsm/ukc-vhsm-server-0.0.1.jar > /opt/unbound_vhsm/vhsm-demo.log
-
