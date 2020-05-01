@@ -68,7 +68,7 @@ Open your browser and navigate to `http://localhost:8081` (for Windows and Mac) 
 
 The Web UI provides the following sections:
 
-1. Tokenization - UKC can be used for tokenization with a format-preserving encryption (FPE) key. This site demonstrates tokenization/de-tokenization of various tokens by UKC using a pre-defined FPE key stored in UKC. The demo use cases include free text, credit card number, email address, USA SSN, and USA phone number.
+1. Tokenization - UKC can be used for tokenization with a format-preserving encryption (FPE) key. This site demonstrates tokenization/de-tokenization of various tokens by UKC using a pre-defined FPE key stored in UKC. The demo use cases include free text, credit card number, USA SSN, and USA phone number.
 2. UKC Admin - access the UKC administration interface, which can be used to view the FPE key details and more. Use these credentials to log in:
     - Username: so
     - Password: Unbound1!
