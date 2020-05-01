@@ -17,7 +17,7 @@ ACTIVATION_CODE=$(curl "https://ukc-ep/api/v1/clients?partitionId=$PARTITION" \
  -H 'Accept: application/json' \
  --user "so@$UKC_PARTITION:$UKC_PASSWORD" \
  -H 'Content-Type: application/json' \
- --compressed --insecure --data-binary "{\"name\":\"$CLIENT\"}"  2>/dev/null)
+ --compressed --insecure --data-binary "{\"name\":\"$CLIENT\"}")
 
 ACTIVATION_CODE=$(echo $ACTIVATION_CODE | jq -r '.activationCode')
 
