@@ -15,8 +15,11 @@ RUN echo "UKC Installed successfully"
 # frontail ports - used for showing logs in webapp
 EXPOSE 9001
 EXPOSE 9002
-RUN git clone https://github.com/mthenw/frontail.git
-RUN cd frontail && npm i
+
+RUN wget -O - https://github.com/mthenw/frontail/tarball/master | tar xz; \
+  mv mthenw* frontail; \
+  cd frontail && npm i --only=prod
+
 # Use unbound styles
 COPY data/frontail/default.css /frontail/web/assets/styles/default.css
 
