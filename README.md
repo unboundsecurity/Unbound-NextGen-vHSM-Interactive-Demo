@@ -52,7 +52,7 @@ Use these instructions to get UKC running using Docker.
 
     ```bash
     docker-compose pull
-    docker-compose up
+    docker-compose up -V
     ```
     The setup takes several minutes to complete. During this time, Docker creates multiple containers for CASP, CASP database, CASP client, and UKC servers. It also creates the CASP user, client, keys, and more.
 
@@ -94,14 +94,14 @@ To update and restart Docker:
     ```
 3. Retart Docker:
     ```bash
-    docker-compose up
+    docker-compose up -V
     ```
 
 ## Troubleshooting
 
 ### *docker-compose* hangs on startup
 
-If you run `docker-compose up` and after a few minutes you still do not see the READY message, it probably means that there was an error starting up the Docker environment. You may have noticed that there were some error messages in the `docker-compose` output.
+If you run `docker-compose up -V` and after a few minutes you still do not see the READY message, it probably means that there was an error starting up the Docker environment. You may have noticed that there were some error messages in the `docker-compose` output.
 
 If this happens, follow these steps:
 1. Stop the `docker-compose` process by pressing Ctrl+c.
@@ -116,7 +116,7 @@ If this happens, follow these steps:
 1. Run `docker system prune`.
 1. Restart the Docker service by clicking on the Docker icon in the system menu bar (Mac) or system tray (Windows) and choosing *Restart*, or by running `docker restart` (Linux).
 1. Run `docker-compose pull` (in the directory where your UKC *docker-compose.yaml* file is located).
-1. Run `docker-compose up`
+1. Run `docker-compose up -V`
 
 ### Cannot open the web console
 
@@ -130,7 +130,7 @@ For example, to change the port from 443 to 9443:
 
     ```bash
     docker-compose down
-    docker-compose up
+    docker-compose up -V
     ```
 3. Use `https://localhost:9443/login` to open UKC web console.
 
