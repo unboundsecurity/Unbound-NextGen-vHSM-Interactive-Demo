@@ -1,6 +1,6 @@
-# Unbound NextGen vHSM™ Interactive Demo
+# Unbound NextGen vHSM® Interactive Demo
 
-The Unbound NextGen vHSM™ Interactive Demo provides a quick and easy way to evaluate the Unbound Key Control [UKC](https://www.unboundtech.com/product/unbound-key-control/) solution. UKC is composed of several components that need to be setup to work properly. Therefore, this quick start solution is provided to enable you to launch UKC without any configuration using Docker.
+The Unbound NextGen vHSM® Interactive Demo provides a quick and easy way to evaluate the Unbound Key Control [UKC](https://www.unboundtech.com/product/unbound-key-control/) solution. UKC is composed of several components that need to be setup to work properly. Therefore, this quick start solution is provided to enable you to launch UKC without any configuration using Docker.
 
 
 ## Installation
