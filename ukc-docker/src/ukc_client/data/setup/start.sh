@@ -1,6 +1,11 @@
 #!/bin/bash
 set -e
 
+echo "Waiting for EP, Partner, Aux ping"
+until ping -c1 ukc-ep &>/dev/null; do :; done
+until ping -c1 ukc-partner &>/dev/null; do :; done
+until ping -c1 ukc-aux &>/dev/null; do :; done
+
 echo "Waiting for EP to start"
 until $(curl --output /dev/null -k --silent --head --fail \
   https://ukc-ep/api/v1/health); do
