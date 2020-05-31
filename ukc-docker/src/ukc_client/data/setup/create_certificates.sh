@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sed -i '29 s/^/#/' /etc/pki/tls/openssl.cnf
+#sed -i '29 s/^/#/' /etc/pki/tls/openssl.cnf
 echo "# Create directory /certs"
 mkdir --parents /certs
 
