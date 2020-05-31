@@ -1,10 +1,11 @@
-FROM unboundukc/centos7:2004
+ARG from=unboundukc/centos7:2004
+FROM $from
 
 #############################################
 # Install UKC server
 ##
-ARG UKC_SERVER_FILENAME=ekm-2.0.2001.41853.el7.x86_64.rpm
-ARG UKC_SERVER_DOWNLOAD_URL=https://repo.dyadicsec.local/cust/autotest/ekm/2.0.2001.41853/linux/ekm-2.0.2001.41853.el7.x86_64.rpm
+ARG UKC_SERVER_FILENAME=ekm-2.0.2004.44153.el8.x86_64.rpm
+ARG UKC_SERVER_DOWNLOAD_URL=https://repo.dyadicsec.com/cust/autotest/ekm/2.0.2004.44153/linux/ekm-2.0.2004.44153.el8.x86_64.rpm
 #Using RUN wget instead of ADD in order to avoid Downloading the same file again
 # ADD caches the layer by the file content and so must download before
 # the cached layer

@@ -11,7 +11,7 @@ cp ../../../webapp/target/ukc-vhsm-server-0.0.1.jar ../ukc_client/data/
 
 # build docker image
 cd ../ukc_client
-./build.sh
+./build_2004.sh
 
 # publish
 # docker push unboundukc/vhsm-client:2001

@@ -28,4 +28,4 @@ RUN ln -s /usr/bin/pip2 /usr/bin/pip
 
 RUN pip install --no-cache-dir pykmip
 
-#RUN curl -sL https://rpm.nodesource.com/setup_10.x | bash - ;  yum install -y nodejs;  yum clean all
+RUN curl -sL https://rpm.nodesource.com/setup_10.x | bash - ;  yum install -y nodejs;  yum clean all
