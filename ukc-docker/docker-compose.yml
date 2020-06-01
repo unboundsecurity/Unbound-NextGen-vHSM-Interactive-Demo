@@ -3,7 +3,7 @@ networks:
   unbound-ukc-demo:
 services:
   ukc-ep:
-    image: "unboundukc/ukc-vhsm:2004"
+    image: "unboundukc/ukc-vhsm:latest"
     container_name: ukc-ep
     restart: always
     ports:
@@ -18,7 +18,7 @@ services:
     networks:
       - unbound-ukc-demo
   ukc-partner:
-    image: "unboundukc/ukc-vhsm:2004"
+    image: "unboundukc/ukc-vhsm:latest"
     container_name: ukc-partner
     restart: always
     command: ["partner", "ukc-ep", "ukc-aux"]
@@ -30,7 +30,7 @@ services:
     networks:
       - unbound-ukc-demo
   ukc-aux:
-    image: "unboundukc/ukc-vhsm:2004"
+    image: "unboundukc/ukc-vhsm:latest"
     container_name: ukc-aux
     restart: always
     command: ["aux", "ukc-ep", "ukc-partner"]
@@ -43,7 +43,7 @@ services:
     networks:
       - unbound-ukc-demo
   ukc-client:
-    image: "unboundukc/vhsm-client:2004"
+    image: "unboundukc/vhsm-client:latest"
     container_name: ukc-client
     restart: always
     hostname: ukc-client
