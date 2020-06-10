@@ -6,6 +6,7 @@ import java.util.Hashtable;
 
 public class UnboundUtil {
   public static String DEFAULT_SDE_KEY_NAME = "unbound-fpe";
+  public static boolean isUseCache = !Boolean.parseBoolean(System.getenv("UKC_DISABLE_SESSION_KEY_CACHE"));
 
   // cache sessions by tweak and purpose
   private static Hashtable<String, SDESessionKey> sessionCache = new Hashtable<String, SDESessionKey>();
@@ -46,15 +47,16 @@ public class UnboundUtil {
   public static SDESessionKey getSdeSessionKey(String tweak, int purpose) {
     // try to used cached session
     String cacheKey = tweak + Integer.toString(purpose);
-    SDESessionKey sk = sessionCache.get(cacheKey);
-    if(sk != null) {
-      return sk;
+    SDESessionKey sk;
+    if(isUseCache) {
+      sk = sessionCache.get(cacheKey);
+      if(sk != null) return sk;
     }
 
     SDEKey key = getSdeKey();
     try {
       sk = key.generateSessionKey(purpose, tweak);
-      sessionCache.put(cacheKey, sk);
+      if(isUseCache) sessionCache.put(cacheKey, sk);
     } catch (Exception e) {
       if (e.getMessage().contains("C_DeriveKey")) {
         throw new RuntimeException(
