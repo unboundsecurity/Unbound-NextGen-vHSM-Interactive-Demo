@@ -2,11 +2,13 @@ package com.unboundtech.demo.vhsm;
 
 import com.dyadicsec.advapi.SDEKey;
 import com.dyadicsec.advapi.SDESessionKey;
+import java.util.Hashtable;
 
 public class UnboundUtil {
   public static String DEFAULT_SDE_KEY_NAME = "unbound-fpe";
 
-  private static String fpeKeyName;
+  // cache sessions by tweak and purpose
+  private static Hashtable<String, SDESessionKey> sessionCache = new Hashtable<String, SDESessionKey>();
 
   public static String getKeyFpeName() {
     return System.getenv("UKC_FPE_KEY");
@@ -42,10 +44,17 @@ public class UnboundUtil {
   }
 
   public static SDESessionKey getSdeSessionKey(String tweak, int purpose) {
+    // try to used cached session
+    String cacheKey = tweak + Integer.toString(purpose);
+    SDESessionKey sk = sessionCache.get(cacheKey);
+    if(sk != null) {
+      return sk;
+    }
+
     SDEKey key = getSdeKey();
-    SDESessionKey sk;
     try {
       sk = key.generateSessionKey(purpose, tweak);
+      sessionCache.put(cacheKey, sk);
     } catch (Exception e) {
       if (e.getMessage().contains("C_DeriveKey")) {
         throw new RuntimeException(
