@@ -1,4 +1,4 @@
-FROM unboundukc/vhsm-client:2004
+FROM unboundukc/vhsm-client:2007
 
 RUN yum -y update;\
     yum -y install maven;\
