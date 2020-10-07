@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout.html :: headerfiles">
+</head>
+<body>
+  <div th:replace="fragments/layout.html :: navbar(cli)"></div>
+  <div class="container">
+    <h1> Client CLI
+      <a href="https://www.unboundtech.com/docs/UKC/UKC_User_Guide/HTML/Content/Products/UKC-EKM/UKC_User_Guide/CLI/A1.html"
+        target="_blank"
+        class="help_link">
+        ?
+      </a>
+    </h1>
+    <p>
+      <strong>Note:</strong> The UKC command line interface described here is only available when the vHSM demo is run locally.
+    </p>
+    <p>
+      The UKC client command line interface (CLI) lets you interact with UKC. To open the CLI, you need to open a command shell on the UKC client (ukc-client).
+    </p>
+
+    <p>
+      For example, run this command to open a Bash shell:
+      <code class="codeblock">
+        docker exec -w /pipelines -it ukc-client /bin/bash
+      </code>
+    </p>
+    <p>
+      After opening the shell, you can run CLI commands. The following command lists the keys in UKC:
+      <code class="codeblock">
+        ucl list
+      </code>
+    </p>
+
+      Demos are provided in scripts as follows:
+
+
+    <ul>
+      <li>
+        <code >
+        /pipelines/01-sign_docker_image.sh
+      </code> - Sign a Docker image.
+      </li>
+      <li>
+        <code>
+          /pipelines/02-verify_docker_image.sh
+        </code> - Verify the signed image.
+      </li>
+      <li>
+        <code>
+          /pipelines/03-sign_jar_file.sh
+        </code> - Sign a Java jar file.
+      </li>
+      <li>
+        <code>
+          /pipelines/04-verify_jar_file.sh
+        </code> - Verify the signed jar file.
+      </li>
+      <li>
+        <code>
+          /pipelines/05-sign_rpm_file.sh
+        </code> - Sign an RPM file.
+      </li>
+      <li>
+        <code>
+          /pipelines/06-verify_rpm_file.sh
+        </code> - Verify the signed RPM file.
+      </li>
+      <li>
+        <code>
+          /pipelines/07-kmip.sh
+        </code> - Run a demo of a KMIP client.
+      </li>
+    </ul>
+
+    <p>
+      You may want to open the
+      <a class="xlink"
+      target="_blank"
+      href="/logs"
+     >System Logs</a>
+     or the <a class="xlink"
+     target="_blank"
+     href="/webadmin"
+    >UKC Admin portal</a> to see how your CLI commands affect UKC.
+    </p>
+    <p>
+      See the <a class="xlink"
+      target="_blank"
+      href="https://www.unboundtech.com/docs/UKC/UKC_User_Guide/HTML/Content/Products/UKC-EKM/UKC_User_Guide/CLI/A1.html">
+      CLI section of the UKC User Guide</a> for more information.
+    </p>
+  </div>
+</body>
+</html>

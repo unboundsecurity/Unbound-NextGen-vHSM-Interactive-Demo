@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout.html :: headerfiles">
+  <script type="text/javascript">
+    $(function() {
+      $("#webadmin_link").attr('href', "https://" + window.location.hostname );
+    })
+  </script>
+</head>
+<body>
+  <div th:replace="fragments/layout.html :: navbar(trust)"></div>
+  <div class="container">
+    <h1> UKC Webadmin </h1>
+    <h2>Important!</h2>
+    <p>
+    UKC Webadmin uses TLS/HTTPS for security.
+    <BR>The demo-server certificate is signed by a localhost CA with a key
+      that is generated and stored in UKC
+    <BR>In order for the browser to trust this server you must add
+      this certificate to your system trusted root CA's
+    </p>
+    <ol>
+      <li>
+        <a id="ca-cert-download" href="/server-ca.p7b">Click here to download UKC CA certificate</a>
+      </li>
+      <li>
+        Install the certificate
+        <ul>
+          <li>
+            <a href="https://tosbourn.com/getting-os-x-to-trust-self-signed-ssl-certificates/"
+              target="_blank">On Mac OS-X</a>
+          </li>
+          <li>
+            <a href="https://community.spiceworks.com/how_to/1839-installing-self-signed-ca-certificate-in-windows"
+              target="_blank">On Windows</a>
+          </li>
+        </ul>
+      </li>
+    </ol>
+
+    <h2>Access the webadmin</h2>
+    <a id="webadmin_link"
+      class="btn btn-primary"
+      target="_blank" href="#">Open UKC Webadmin</a>
+  </div>
+</body>
+</html>

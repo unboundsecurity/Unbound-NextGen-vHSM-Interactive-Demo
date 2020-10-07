@@ -1,0 +1,65 @@
+#!/bin/bash
+set -e
+
+echo "Waiting for EP to start"
+until $(curl --output /dev/null -k --silent --head --fail \
+  https://ukc-ep/api/v1/health); do
+    printf '*'
+    sleep 5
+done
+
+echo "Waiting for partition ${UKC_PARTITION} 'so' password reset"
+until $(curl --output /dev/null --silent -k --fail --compressed \
+  --user "so@$UKC_PARTITION:$UKC_PASSWORD" \
+  "https://ukc-ep/api/v1/info?partitionId=$UKC_PARTITION" ); do
+    printf '.'
+    sleep 5
+done
+
+echo "UKC ready registering client"
+./register_new_client.sh
+
+echo "Resetting 'user' password to empty"
+curl "https://ukc-ep/api/v1/users/user/password?partitionId=$UKC_PARTITION" \
+    -X PUT -H 'Connection: keep-alive' \
+    -H 'Accept: application/json, text/plain, */*' \
+    -H 'Content-Type: application/json' \
+    --user 'so@test:Unbound1!' \
+    --compressed --insecure \
+    --data-binary "{\"password\":\"\"}"
+
+if ! ucl show -n $UKC_FPE_KEY; then
+  echo "Creating key for tokenization"
+  ucl generate -n $UKC_FPE_KEY -t PRF
+fi
+
+echo "Configuring openssl with Unbound security provider"
+export OPENSSL_CONF="/etc/pki/tls/openssl.cnf"
+
+echo "Generating TLS certificate for tomcat"
+if ! ucl show -n $UKC_TOMCAT_KEY; then
+  keytool -genkey -keyalg EC -alias $UKC_TOMCAT_KEY \
+   -keystore NONE \
+   -storetype PKCS11 \
+   -providername DYADIC \
+   -validity 365 \
+   -keysize 265 \
+   -providerclass com.dyadicsec.provider.DYCryptoProvider -providerarg $UKC_PARTITION \
+   -providerpath /usr/lib64/ekm-java-provider-2.0.jar \
+   -dname "O=CLIENT, CN=$UKC_TOMCAT_KEY" \
+   -noprompt \
+   -storepass $UKC_PASSWORD
+fi
+# if ! ucl show -n $UKC_TOMCAT_KEY; then
+#   openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 \
+#     -subj "/O=SERVER/CN=ukc-demo-client" \
+#     -keyout ukc-demo.key  -out ukc-demo.cer \
+#     -reqexts SAN \
+#     -config <(cat $OPENSSL_CONF \
+#         <(printf "\n[SAN]\nsubjectAltName=DNS:localhost,DNS:192.168.0.1"))
+#   # change the key name - find it as it will be the only one with UID as name
+#   ucl change-info -u $(ucl list | grep -Po '(0x00\w+)') --newname $UKC_TOMCAT_KEY
+#   ucl import -i ukc-demo.cer -p test --name $UKC_TOMCAT_KEY
+# fi
+# tail -f /dev/null
+# cd /unbound_crypto_server && mvn spring-boot:run

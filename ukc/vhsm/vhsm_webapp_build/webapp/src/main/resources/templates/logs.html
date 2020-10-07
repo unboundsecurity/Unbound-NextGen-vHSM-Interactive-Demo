@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head >
+  <!--/*/ <th:block th:include="fragments/layout.html :: headerfiles">
+        </th:block> /*/-->
+  <style>
+    input[type=text] {
+      width: 100%;
+    }
+
+    .tab-pane {
+      width: 100%;
+      height: 600px;
+    }
+
+    .tab-pane>iframe {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <script type="text/javascript">
+    $(function() {
+      var origin = window.location.protocol + "//" + window.location.hostname;
+      $(".tab-pane#ep iframe").attr('src', origin + ":9021");
+      $(".tab-pane#epcrypto iframe").attr('src', origin + ":9022");
+      $(".tab-pane#partnercrypto iframe").attr('src', origin + ":9023");
+
+      $('#myTab a').on('click', function(e) {
+        e.preventDefault()
+        $(this).tab('show')
+      })
+    });
+  </script>
+</head>
+
+<body>
+  <div th:replace="fragments/layout.html :: navbar(logs)"></div>
+
+  <div class="container">
+    <h1>UKC System Logs
+      <a href="https://www.unboundtech.com/docs/UKC/UKC_User_Guide/HTML/Content/Products/UKC-EKM/UKC_User_Guide/Logs/A1.html"
+        target="_blank"
+        class="help_link">
+        ?
+      </a>
+    </h1>
+    <p>
+      Try executing an operation in UI or CLI and see it reflected in the logs below.
+    </p>
+    <p>
+      Select which server logs to view. <strong>EP-UKC</strong> shows UKC management operations.
+      <strong>EP-Crypto</strong> shows MPC cryptographic operations. <strong>Partner-Crypto</strong> is the pair of the EP and reflects its MPC operations.
+    </p>
+
+    <ul class="nav nav-pills" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="ep-tab"
+           data-toggle="tab" href="#ep" role="tab"
+           aria-controls="ep" aria-selected="true">
+          EP - UKC
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="epcrypto-tab" data-toggle="tab"
+           href="#epcrypto" role="tab" aria-controls="epcrypto"
+           aria-selected="false">
+          EP - Crypto
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="partnercrypto-tab" data-toggle="tab"
+           href="#partnercrypto" role="tab" aria-controls="partnercrypto"
+           aria-selected="false">
+          Partner - Crypto
+        </a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane fade active show" id="ep" role="tabpanel" aria-labelledby="ep-tab">
+        <iframe src="http://localhost:9021">
+          Sorry your browser does not support inline frames.
+        </iframe>
+      </div>
+      <div class="tab-pane fade" id="epcrypto" role="tabpanel" aria-labelledby="epcrypto-tab">
+        <iframe src="http://localhost:9022">
+          Sorry your browser does not support inline frames.
+        </iframe>
+      </div>
+      <div class="tab-pane fade" id="partnercrypto" role="tabpanel" aria-labelledby="partnercrypto-tab">
+        <iframe src="http://localhost:9023">
+          Sorry your browser does not support inline frames.
+        </iframe>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
