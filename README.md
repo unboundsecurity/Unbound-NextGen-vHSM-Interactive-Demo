@@ -122,9 +122,10 @@ If this happens, follow these steps:
 
 If you cannot open the UKC web console in your browser, you might have port 443 in use by another service.
 
-You can change UKC web console port by editing `docker-compose.yml`, and replacing the UKC export port with a different port.
+You can change UKC web console port by editing `docker-compose.yml`, and replacing the UKC export port with a different port. Ports are specified in this file with a format `HOST:CONTAINER`. See the [Docker documentation](https://docs.docker.com/compose/compose-file/#ports) for more information.
 
 For example, to change the port from 443 to 9443:
+1. Locate the `ukc-client` section in the `docker-compose.yml` file.
 1. Change `"443:443"` to `"9443:443"`.
 2. Restart the Docker with:
 
