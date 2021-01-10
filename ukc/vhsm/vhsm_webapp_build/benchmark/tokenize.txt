@@ -1,1 +1,0 @@
-this text is used for tokenize benchmark
