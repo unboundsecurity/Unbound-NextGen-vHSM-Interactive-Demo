@@ -111,7 +111,7 @@ If this happens, follow these steps:
     ```
 1. Remove existing images:
     ```
-    docker rmi -f unboundukc/ukc-vhsm:2001  unboundukc/vhsm-client:2001
+    docker rmi -f unboundukc/ukc-vhsm  unboundukc/vhsm-client
     ```
 1. Run `docker system prune`.
 1. Restart the Docker service by clicking on the Docker icon in the system menu bar (Mac) or system tray (Windows) and choosing *Restart*, or by running `docker restart` (Linux).
