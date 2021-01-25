@@ -1,22 +1,25 @@
 version: '3'
 networks:
-  unbound-ukc-demo:
+  unbound:
 services:
   ukc-ep:
-    image: "unboundukc/ukc-vhsm:latest"
+    container_name: "ukc-ep-vhsm"
+    image: "${UNBOUND_REPO:-unboundukc}/ukc-server:${UB_VER:-latest}.vhsm"
     restart: always
     ports:
       - "9021:9001"
       - "9022:9002"
       - "8082:8080"
+      - "9443:443"
     command: ["ep", "ukc-partner", "ukc-aux"]
     hostname: ukc-ep
     env_file:
       settings.env
     networks:
-      - unbound-ukc-demo
+      - unbound
   ukc-partner:
-    image: "unboundukc/ukc-vhsm:latest"
+    container_name: "ukc-partner-vhsm"
+    image: "${UNBOUND_REPO:-unboundukc}/ukc-server:${UB_VER:-latest}.vhsm"
     restart: always
     command: ["partner", "ukc-ep", "ukc-aux"]
     hostname: ukc-partner
@@ -25,9 +28,10 @@ services:
     ports:
       - "9023:9002"
     networks:
-      - unbound-ukc-demo
+      - unbound
   ukc-aux:
-    image: "unboundukc/ukc-vhsm:latest"
+    container_name: "ukc-aux-vhsm"
+    image: "${UNBOUND_REPO:-unboundukc}/ukc-server:${UB_VER:-latest}.vhsm"
     restart: always
     command: ["aux", "ukc-ep", "ukc-partner"]
     hostname: ukc-aux
@@ -37,9 +41,10 @@ services:
     ports:
       - "9024:9001"
     networks:
-      - unbound-ukc-demo
+      - unbound
   ukc-client:
-    image: "unboundukc/vhsm-client:latest"
+    container_name: "ukc-client-vhsm"
+    image: "${UNBOUND_REPO:-unboundukc}/ukc-client:${UB_VER:-latest}.vhsm"
     restart: always
     hostname: ukc-client
     depends_on:
@@ -50,4 +55,4 @@ services:
     env_file:
       settings.env
     networks:
-      - unbound-ukc-demo
+      - unbound
