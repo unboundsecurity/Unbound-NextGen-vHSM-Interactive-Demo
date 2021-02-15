@@ -63,8 +63,9 @@ Use these instructions to get UKC running using Docker.
 
 **Congratulations! UKC is now running.**
 
-## Next Step - Explore the Web Interface
-Open your browser and navigate to `http://localhost:8081` (for Windows and Mac) or `http://<docker-ip-address>:8081` (for Linux, where *docker-ip-address* is the server where you installed Docker).
+
+## Next Step - Explore the vHSM Demo
+Open your browser and navigate to [http://localhost:8081](http://localhost:8081) (for Windows and Mac) or [http://<docker-ip-address>:8081](http://<docker-ip-address>:8081) (for Linux, where *docker-ip-address* is the server where you installed Docker).
 
 The Web UI provides the following sections:
 
@@ -77,6 +78,18 @@ The Web UI provides the following sections:
 3. CLI - get access to the UKC client command line interface.
 4. Logs - view the logs for the UKC servers. This can be helpful to view after running tokenization/de-tokenization operations.
 5. Resources - links to more information about UKC, the SDE API, and
+
+## Testing Development
+
+Development can be done in one of the following ways:
+
+1. Unbound UKC Client - [contact Unbound](mailto:support@unboundtech.com) for instructions.
+2. UKC clientless provider - see the [UKC User Guide](https://www.unboundtech.com/docs/UKC/UKC_Developers_Guide/HTML/Content/Products/UKC-EKM/UKC_Developers_Guide/DevelopingInJava/Developing_in_Java.htm#h3_14) for instructions on using the clientless provider. Also, see [Using Maven](https://www.unboundtech.com/docs/UKC/UKC_Developers_Guide/HTML/Content/Products/UKC-EKM/UKC_Developers_Guide/IntroducingSDK/Introducing_SDK.htm#Using-Maven) in the UKC User Guide.
+3. REST API - See the [UKC User Guide REST API](https://www.unboundtech.com/docs/UKC/UKC_Developers_Guide/HTML/Content/Products/UKC-EKM/UKC_Developers_Guide/REST_API.htm) section. 
+
+**Notes:**
+- Development is supported from the Docker host, but not from other machines.
+- To access the web interface, navigate to [https://localhost:9443/](https://localhost:9443/)
 
 
 <a name="update"></a>
