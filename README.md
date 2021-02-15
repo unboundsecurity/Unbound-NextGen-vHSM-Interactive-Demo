@@ -65,7 +65,7 @@ Use these instructions to get UKC running using Docker.
 
 
 ## Next Step - Explore the vHSM Demo
-Open your browser and navigate to [http://localhost:8081](http://localhost:8081) (for Windows and Mac) or [http://<docker-ip-address>:8081](http://<docker-ip-address>:8081) (for Linux, where *docker-ip-address* is the server where you installed Docker).
+Open your browser and navigate to [http://localhost:8081](http://localhost:8081) (for Windows and Mac) or `http://<docker-ip-address>:8081` (for Linux, where *docker-ip-address* is the server where you installed Docker).
 
 The Web UI provides the following sections:
 
