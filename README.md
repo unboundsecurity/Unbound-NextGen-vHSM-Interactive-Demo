@@ -89,7 +89,7 @@ Development can be done in one of the following ways:
 
 **Notes:**
 - Development is supported from the Docker host, but not from other machines.
-- To access the web interface, navigate to [https://localhost:9443/](https://localhost:9443/)
+- When using these options, UKC can be accessed at `https://localhost:9443/`.
 
 
 <a name="update"></a>
