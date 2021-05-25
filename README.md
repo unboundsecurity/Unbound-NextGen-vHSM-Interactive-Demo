@@ -1,14 +1,14 @@
 # Unbound NextGen vHSM® Interactive Demo
 
-The Unbound NextGen vHSM® Interactive Demo provides a quick and easy way to evaluate the Unbound Key Control [UKC](https://www.unboundtech.com/product/unbound-key-control/) solution. UKC is composed of several components that need to be setup to work properly. Therefore, this quick start solution is provided to enable you to launch UKC without any configuration using Docker.
+The Unbound NextGen vHSM® Interactive Demo provides a quick and easy way to evaluate the Unbound [CORE](https://www.unboundsecurity.com/solutions/information-security/) solution. CORE is composed of several components that need to be setup to work properly. Therefore, this quick start solution is provided to enable you to launch CORE without any configuration using Docker.
 
 
 ## Installation
 
-Use these instructions to get UKC running using Docker.
+Use these instructions to get CORE running using Docker.
 
 1. If you are not registered for Docker, follow the <a href="https://hub.docker.com/?overlay=onboarding" target="_blank">registration process</a> (It is recommended to open this link in a new tab).
-1. [Contact Unbound](https://www.unboundtech.com/company/contact-us/) and provide us with your Docker username to get access to the Docker images.
+1. [Contact Unbound](https://www.unboundsecurity.com/company/contact-us/) and provide us with your Docker username to get access to the Docker images.
 1. Install Docker.
     - For Windows:
         - Install Docker Desktop CE (community edition). It must include Docker Engine version 19.03 or newer. You can get the latest version from [Docker](https://hub.docker.com/?overlay=onboarding).
@@ -18,7 +18,7 @@ Use these instructions to get UKC running using Docker.
    - For Mac:
        - Install Docker Desktop (community edition) v2.1.0.5 or newer. Follow the instructions to [install Docker Desktop](https://docs.docker.com/compose/install/).
 
-1. Download or clone this repository from the [main page](https://github.com/unbound-tech/vhsm_demo) or click [here](https://github.com/unbound-tech/vhsm_demo/archive/master.zip).
+1. Download or clone this repository from the [main page](https://github.com/unboundsecurity/Unbound-NextGen-vHSM-Interactive-Demo) or click [here](https://github.com/unboundsecurity/Unbound-NextGen-vHSM-Interactive-Demo/archive/refs/heads/master.zip).
 1. If you downloaded a compressed (*.zip*) file, uncompress it.
 1. The download contains a folder called *ukc-docker*. Open a terminal (such as *cmd* or *PowerShell* on Windows) and navigate to the `ukc-docker` folder.
 
@@ -74,7 +74,7 @@ The Web UI provides the following sections:
     - Username: so
     - Password: Unbound1!
     - Partition: root (or test)
-    For more information on how to use the web interface, see [UKC User Guide](https://www.unboundtech.com/docs/UKC/UKC_User_Guide/HTML/Content/Products/UKC-EKM/UKC_User_Guide/UI/A1.html).
+    For more information on how to use the web interface, see [UKC User Interface Guide](https://www.unboundsecurity.com/docs/UKC/UKC_Interfaces/Content/Products/UKC-EKM/UKC_User_Guide/UG-If/uiSignIn/Signin.html).
 3. CLI - get access to the UKC client command line interface.
 4. Logs - view the logs for the UKC servers. This can be helpful to view after running tokenization/de-tokenization operations.
 5. Resources - links to more information about UKC, the SDE API, and
@@ -83,9 +83,9 @@ The Web UI provides the following sections:
 
 Development can be done in one of the following ways:
 
-1. Unbound UKC Client - [contact Unbound](mailto:support@unboundtech.com) for instructions.
-2. UKC clientless provider - see the [UKC User Guide](https://www.unboundtech.com/docs/UKC/UKC_Developers_Guide/HTML/Content/Products/UKC-EKM/UKC_Developers_Guide/DevelopingInJava/Developing_in_Java.htm#h3_14) for instructions on using the clientless provider. Also, see [Using Maven](https://www.unboundtech.com/docs/UKC/UKC_Developers_Guide/HTML/Content/Products/UKC-EKM/UKC_Developers_Guide/IntroducingSDK/Introducing_SDK.htm#Using-Maven) in the UKC User Guide.
-3. REST API - See the [UKC User Guide REST API](https://www.unboundtech.com/docs/UKC/UKC_Developers_Guide/HTML/Content/Products/UKC-EKM/UKC_Developers_Guide/REST_API.htm) section. 
+1. Unbound UKC Client - [contact Unbound](mailto:support@unboundsecurity.com) for instructions.
+2. UKC clientless provider - see the [UKC User Guide](https://www.unboundsecurity.com/docs/UKC/UKC_Developers_Guide/HTML/Content/Products/UKC-EKM/UKC_Developers_Guide/DevelopingInJava/Developing_in_Java.htm#h3_14) for instructions on using the clientless provider. Also, see [Using Maven](https://www.unboundsecurity.com/docs/UKC/UKC_Developers_Guide/HTML/Content/Products/UKC-EKM/UKC_Developers_Guide/IntroducingSDK/Introducing_SDK.htm#Using-Maven) in the UKC User Guide.
+3. REST API - See the [UKC User Guide REST API](https://www.unboundsecurity.com/docs/UKC/UKC_Developers_Guide/HTML/Content/Products/UKC-EKM/UKC_Developers_Guide/REST_API.htm) section. 
 
 **Notes:**
 - Development is supported from the Docker host, but not from other machines.
@@ -156,7 +156,7 @@ If you need to turn on virtualization on your Windows device, use these instruct
 - You must [enable virtualization](https://blogs.technet.microsoft.com/canitpro/2015/09/08/step-by-step-enabling-hyper-v-for-use-on-windows-10/) in the BIOS on your device.
 
 ### UKC logs
-You can see the UKC log files by logging into the Docker container for the EP and then finding the UKC logs. See [here](https://www.unboundtech.com/docs/UKC/UKC_User_Guide/HTML/Content/Products/UKC-EKM/UKC_User_Guide/Logs/A1.html) for more information about the UKC logs.
+You can see the UKC log files by logging into the Docker container for the EP and then finding the UKC logs. See [here](https://www.unboundsecurity.com/docs/UKC/UKC_Maintenance/Content/Products/Unbound_Cover_Page.htm) for more information about the UKC logs.
 
 ## Tips
 
