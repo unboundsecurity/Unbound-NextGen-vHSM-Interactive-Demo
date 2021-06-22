@@ -86,7 +86,7 @@ public class ApiController {
   @PostMapping(path = "/tokenizeEmail", consumes = "text/plain", produces = "text/plain")
   public String tokenizeEmail(@RequestBody String clearText) {
     SDESessionKey sk = UnboundUtil.getSdeSessionKey(DEFAULT_TWEAK, SDEKey.PURPOSE_EMAIL_ENC);
-    // String txt = sk.encryptEMailAddress("adam.ilan@unboundtech.com", 100);
+    // String txt = sk.encryptEMailAddress("adam.ilan@unboundsecurity.com", 100);
     // return txt;
     return sk.encryptEMailAddress(clearText.trim(), 50);
   }
