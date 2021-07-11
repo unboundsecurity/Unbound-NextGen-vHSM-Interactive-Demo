@@ -17,6 +17,10 @@ services:
       settings.env
     networks:
       - unbound
+    deploy:
+      resources:
+        limits:
+          memory: 450m
   ukc-partner:
     container_name: "ukc-partner-vhsm"
     image: "${UNBOUND_REPO:-unboundukc}/ukc-server:${UB_VER:-latest}.vhsm"
@@ -29,6 +33,10 @@ services:
       - "9023:9002"
     networks:
       - unbound
+    deploy:
+      resources:
+        limits:
+          memory: 450m
   ukc-aux:
     container_name: "ukc-aux-vhsm"
     image: "${UNBOUND_REPO:-unboundukc}/ukc-server:${UB_VER:-latest}.vhsm"
@@ -42,6 +50,10 @@ services:
       - "9024:9001"
     networks:
       - unbound
+    deploy:
+      resources:
+        limits:
+          memory: 450m
   ukc-client:
     container_name: "ukc-client-vhsm"
     image: "${UNBOUND_REPO:-unboundukc}/ukc-client:${UB_VER:-latest}.vhsm"
@@ -56,3 +68,7 @@ services:
       settings.env
     networks:
       - unbound
+    deploy:
+      resources:
+        limits:
+          memory: 450m
