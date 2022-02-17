@@ -54,7 +54,7 @@ Use these instructions to get CORE running using Docker.
     docker-compose pull
     docker-compose up -V
     ```
-    The setup takes several minutes to complete. During this time, Docker creates multiple containers for CASP, CASP database, CASP client, and UKC servers. It also creates the CASP user, client, keys, and more.
+    The setup takes several minutes to complete. During this time, Docker creates multiple containers for UKC - UKC Servers Triplet(Entry-Point, Partner, Auxiliary) and UKC Client.
 
 1. Wait until you see a large **READY** message. This message means that everything is installed and working. You may see some errors during the install process, but as long as you get the **READY** message, UKC was installed correctly.
 
